@@ -38,7 +38,7 @@ function Contact() {
       }
     } catch (error: any) {
       console.error("Submission error:", error);
-      setStatus({ type: 'error', message: "Something went wrong. Please try again." });
+      setStatus({ type: 'error', message: "Backend Error: Could not reach the server. Please check your connection or try again later." });
     } finally {
       setLoading(false);
     }

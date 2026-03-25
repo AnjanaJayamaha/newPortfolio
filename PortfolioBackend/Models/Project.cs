@@ -11,6 +11,7 @@ namespace PortfolioBackend.Models
         public string VideoUrl { get; set; } = string.Empty;
         public string GithubUrl { get; set; } = string.Empty;
         public string LiveDemoUrl { get; set; } = string.Empty;
+        public string Duration { get; set; } = string.Empty;
         public bool IsMaintenance { get; set; } = false;
     }
 }

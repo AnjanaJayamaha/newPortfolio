@@ -32,6 +32,7 @@ var app = builder.Build();
 using (var scope = app.Services.CreateScope())
 {
     var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+    db.Database.EnsureDeleted();
     db.Database.EnsureCreated();
 
     if (!db.Projects.Any())
@@ -46,7 +47,8 @@ using (var scope = app.Services.CreateScope())
                 ImageUrl = "",
                 VideoUrl = "parking-system.mp4",
                 GithubUrl = "https://github.com",
-                LiveDemoUrl = ""
+                LiveDemoUrl = "",
+                Duration = "9 Months"
             },
             new Project
             {
@@ -58,6 +60,7 @@ using (var scope = app.Services.CreateScope())
                 VideoUrl = "",
                 GithubUrl = "https://github.com",
                 LiveDemoUrl = "",
+                Duration = "4 Months",
                 IsMaintenance = true
             },
             new Project
@@ -69,7 +72,8 @@ using (var scope = app.Services.CreateScope())
                 ImageUrl = "",
                 VideoUrl = "speakup.mp4",
                 GithubUrl = "https://github.com/AnjanaJayamaha/SpeakUp",
-                LiveDemoUrl = ""
+                LiveDemoUrl = "",
+                Duration = "2 Months"
             },
             new Project
             {
@@ -81,6 +85,7 @@ using (var scope = app.Services.CreateScope())
                 VideoUrl = "",
                 GithubUrl = "https://github.com",
                 LiveDemoUrl = "",
+                Duration = "3 Months",
                 IsMaintenance = true
             },
             new Project
@@ -92,11 +97,18 @@ using (var scope = app.Services.CreateScope())
                 ImageUrl = "portfolio-1.png",
                 VideoUrl = "",
                 GithubUrl = "https://github.com",
-                LiveDemoUrl = ""
+                LiveDemoUrl = "",
+                Duration = "2 Months"
             }
         );
 
         db.SaveChanges();
+        Console.WriteLine("--- Database Content Verification ---");
+        foreach (var p in db.Projects.ToList())
+        {
+            Console.WriteLine($"Project: {p.Title} | Duration: {p.Duration}");
+        }
+        Console.WriteLine("-------------------------------------");
     }
 }
 

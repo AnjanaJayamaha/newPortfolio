@@ -146,3 +146,4 @@ C:\Users\wijesingha\Documents\newPortfolio\PortfolioBackend\bin\Debug\net10.0\ru
 C:\Users\wijesingha\Documents\newPortfolio\PortfolioBackend\bin\Debug\net10.0\runtimes\win-arm64\native\e_sqlite3.dll
 C:\Users\wijesingha\Documents\newPortfolio\PortfolioBackend\bin\Debug\net10.0\runtimes\win-x64\native\e_sqlite3.dll
 C:\Users\wijesingha\Documents\newPortfolio\PortfolioBackend\bin\Debug\net10.0\runtimes\win-x86\native\e_sqlite3.dll
+C:\Users\wijesingha\Documents\newPortfolio\PortfolioBackend\obj\Debug\net10.0\PortfolioBackend.sourcelink.json

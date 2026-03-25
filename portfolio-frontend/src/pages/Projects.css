@@ -1,0 +1,20 @@
+.modal-duration-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: rgba(0, 217, 192, 0.12);
+  border: 1px solid rgba(0, 217, 192, 0.3);
+  color: #8ffdf1;
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 500;
+  margin-bottom: 25px;
+  width: fit-content;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.modal-duration-tag svg {
+  font-size: 16px;
+  color: #00d9c0;
+}

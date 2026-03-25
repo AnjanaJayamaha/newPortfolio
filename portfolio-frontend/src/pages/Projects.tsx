@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 import Navbar from "../components/Navbar";
-import { FaGithub, FaExternalLinkAlt, FaTimes } from "react-icons/fa";
+import { FaGithub, FaExternalLinkAlt, FaTimes, FaRegClock } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import "./Projects.css";
 
 function Projects() {
   const [projectsData, setProjectsData] = useState<any[]>([]);
@@ -22,7 +23,7 @@ function Projects() {
         setProjectsData(data);
       } catch (err: any) {
         console.error("Fetch error:", err);
-        setError(err.message);
+        setError("Backend Error: Failed to connect to the API. Please ensure the backend server is running.");
       } finally {
         setLoading(false);
       }
@@ -94,9 +95,6 @@ function Projects() {
                 <div className="project-info">
                   <h2>{project.title}</h2>
                   <p>{project.description}</p>
-                  <div className="project-buttons">
-                    <span className="view-details">View Details</span>
-                  </div>
                 </div>
               </motion.div>
             ))}
@@ -152,6 +150,11 @@ function Projects() {
                     {selectedProject.techStack?.split(',').map((tech: string, idx: number) => (
                       <span key={idx} className="tech-tag">{tech.trim()}</span>
                     ))}
+                  </div>
+
+                  <div className="modal-duration-tag">
+                    <FaRegClock />
+                    <span>Duration: {selectedProject.duration}</span>
                   </div>
 
                   <div className="modal-description">
