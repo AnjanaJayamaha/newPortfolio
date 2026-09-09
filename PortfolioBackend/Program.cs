@@ -4,6 +4,10 @@ using PortfolioBackend.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Ensure the app listens on the PORT provided by Railway/Render
+var port = Environment.GetEnvironmentVariable("PORT") ?? "5243";
+builder.WebHost.UseUrls($"http://*:{port}");
+
 // Add services to the container
 builder.Services.AddControllers();
 
@@ -46,23 +50,24 @@ using (var scope = app.Services.CreateScope())
                 TechStack = "Python, React, Node.js, Flask, MongoDB, YOLOv8, OpenCV, ESP32",
                 ImageUrl = "",
                 VideoUrl = "parking-system.mp4",
-                GithubUrl = "https://github.com",
+                GithubUrl = "https://github.com/kalanas210/anpr-ai-parking-system",
                 LiveDemoUrl = "",
                 Duration = "9 Months"
             },
             new Project
             {
-                Title = "Sprouty",
-                Subtitle = "Child Care Management System",
+                Title = "LittleSparks",
+                Subtitle = "ChildCare Management System",
                 Description = "A childcare management platform for admins, staff, and parents with child profiles, attendance, communication, and secure role-based access.",
                 TechStack = "React, Spring Boot, MySQL, Firebase",
                 ImageUrl = "sprouty-1.png",
                 VideoUrl = "",
-                GithubUrl = "https://github.com",
+                GithubUrl = "https://github.com/DevSpark-LittleSparks",
                 LiveDemoUrl = "",
-                Duration = "4 Months",
+                Duration = "6 Months",
                 IsMaintenance = true
             },
+            
             new Project
             {
                 Title = "SpeakUp",
@@ -94,11 +99,23 @@ using (var scope = app.Services.CreateScope())
                 Subtitle = "React • TypeScript",
                 Description = "A modern personal portfolio website built with React and Framer Motion to showcase my skills, education, and professional projects.",
                 TechStack = "React, TypeScript, Framer Motion, Vite, .NET Core",
-                ImageUrl = "portfolio-1.png",
+                ImageUrl = "portfolio.png",
                 VideoUrl = "",
-                GithubUrl = "https://github.com",
+                GithubUrl = "https://github.com/AnjanaJayamaha/newPortfolio",
                 LiveDemoUrl = "",
                 Duration = "2 Months"
+            },
+            new Project
+            {
+                Title = "ANJ Chatbot",
+                Subtitle = "Mood-Aware AI Companion",
+                Description = "A deeply personalized AI companion that shifts its entire vibe and response tone based on the user's emotional state. Features dynamic themes and mindfulness micro-goals.",
+                TechStack = "React.js, TypeScript, Vite, Vercel Edge API, Groq Cloud, Llama 3.3",
+                ImageUrl = "",
+                VideoUrl = "ANJchatbot.mp4",
+                GithubUrl = "https://github.com/AnjanaJayamaha/ANJ-chatbot",
+                LiveDemoUrl = "https://anj-chatbot.vercel.app/",
+                
             }
         );
 

@@ -1,20 +1,356 @@
+/* =====================================
+   PROJECTS PAGE LAYOUT
+===================================== */
+.projects-page {
+  min-height: 100vh;
+  padding: 8rem 0 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.projects-title {
+  font-family: var(--font-heading);
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  color: var(--color-primary-dark);
+  text-align: center;
+  position: relative;
+}
+
+.projects-title span {
+  color: var(--color-accent);
+}
+
+.loading, .error {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+  margin-top: 2rem;
+}
+
+.error {
+  color: #d9534f;
+}
+
+/* =====================================
+   PROJECTS GRID & CARDS
+===================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+  width: 100%;
+  max-width: 1200px;
+  padding: 0 1.5rem;
+}
+
+.project-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--color-accent);
+}
+
+.project-media {
+  position: relative;
+  width: 100%;
+  height: 200px;
+  background: #eae4dd;
+  overflow: hidden;
+}
+
+.project-media img,
+.project-media video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.project-card:hover .project-media img,
+.project-card:hover .project-media video {
+  transform: scale(1.05);
+}
+
+.project-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.maintenance-badge {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: rgba(255, 189, 46, 0.9);
+  color: #5a4000;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  z-index: 2;
+  backdrop-filter: blur(4px);
+}
+
+.project-info {
+  padding: 1.5rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-info h2 {
+  font-size: 1.3rem;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.5rem;
+  font-family: var(--font-heading);
+}
+
+.project-info p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  margin-bottom: 1rem;
+}
+
+/* =====================================
+   MAC WINDOW MODAL (DARK)
+===================================== */
+.project-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(15, 10, 8, 0.6);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.mac-modal {
+  width: 100%;
+  max-width: 900px;
+  background-color: #121212;
+  border-radius: 12px;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 30px 60px rgba(0,0,0,0.4);
+  overflow: hidden;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* subtle grid for modal */
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Mac Title Bar */
+.mac-modal-header {
+  height: 40px;
+  background-color: #1a1a1a;
+  border-bottom: 1px solid #2a2a2a;
+  display: flex;
+  align-items: center;
+  padding: 0 1rem;
+  position: relative;
+}
+
+.mac-modal-controls {
+  display: flex;
+  gap: 8px;
+}
+
+.mac-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+.mac-dot.red { background-color: #ff5f56; }
+.mac-dot.yellow { background-color: #ffbd2e; }
+.mac-dot.green { background-color: #27c93f; }
+
+.mac-modal-title {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.85rem;
+  color: #888;
+  font-weight: 500;
+}
+
+/* Modal Content Area */
+.mac-modal-body {
+  display: flex;
+  flex-direction: column;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+@media (min-width: 768px) {
+  .mac-modal-body {
+    flex-direction: row;
+    height: 500px;
+  }
+}
+
+/* Left Media Section */
+.modal-media-section {
+  flex: 1;
+  background: #000;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-right: 1px solid #2a2a2a;
+  min-height: 250px;
+}
+
+.modal-media-section img,
+.modal-media-section video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-maintenance-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  z-index: 5;
+}
+
+.modal-maintenance-overlay h2 {
+  color: #ffbd2e;
+  margin-bottom: 0.5rem;
+}
+
+.modal-maintenance-overlay p {
+  color: #ccc;
+  font-size: 0.9rem;
+}
+
+/* Right Info Section */
+.modal-info-section {
+  flex: 1;
+  padding: 2rem;
+  background-color: rgba(17, 17, 17, 0.8);
+  backdrop-filter: blur(10px);
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-info-section h1 {
+  font-size: 1.8rem;
+  margin-bottom: 0.25rem;
+  color: #fff;
+}
+
+.modal-info-section h3 {
+  font-size: 1rem;
+  color: var(--color-accent);
+  margin-bottom: 1.5rem;
+  font-weight: 400;
+}
+
+.modal-tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.tech-tag {
+  background: #222;
+  border: 1px solid #333;
+  color: #ddd;
+  padding: 4px 10px;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
 .modal-duration-tag {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: rgba(0, 217, 192, 0.12);
-  border: 1px solid rgba(0, 217, 192, 0.3);
-  color: #8ffdf1;
-  padding: 8px 18px;
-  border-radius: 50px;
-  font-size: 14px;
-  font-weight: 500;
-  margin-bottom: 25px;
-  width: fit-content;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #aaa;
+  font-size: 0.85rem;
+  margin-bottom: 1.5rem;
 }
 
 .modal-duration-tag svg {
-  font-size: 16px;
-  color: #00d9c0;
+  color: var(--color-accent);
+}
+
+.modal-description {
+  color: #bbb;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.modal-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0.8rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.modal-btn.github {
+  background: #fff;
+  color: #000;
+}
+.modal-btn.github:hover {
+  background: #e0e0e0;
+}
+
+.modal-btn.live {
+  background: var(--color-accent);
+  color: #fff;
+}
+.modal-btn.live:hover {
+  background: var(--color-coffee);
+  box-shadow: 0 0 15px rgba(232, 122, 62, 0.4);
 }

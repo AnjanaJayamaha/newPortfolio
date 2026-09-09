@@ -1,190 +1,225 @@
+import React, { useState } from "react";
 import Navbar from "../components/Navbar";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
+import profileImg from "../assets/profile.png";
+import CustomCursor from "../components/CustomCursor";
+import { FiSearch } from "react-icons/fi";
 import {
-  FaHtml5,
-  FaCss3Alt,
-  FaJs,
-  FaReact,
-  FaBootstrap,
-  FaJava,
-  FaPython,
-  FaGitAlt,
-  FaFigma,
-  FaPhp,
-  FaNodeJs,
-  FaUsers,
-  FaLightbulb,
-  FaClock,
-  FaCode
+  FaHtml5, FaCss3Alt, FaJs, FaReact, FaJava, FaPython,
+  FaGitAlt, FaFigma, FaPhp, FaNodeJs, FaUsers, FaLightbulb, FaClock, FaCode
 } from "react-icons/fa";
-
-import { 
-  SiSpringboot, 
-  SiMysql, 
-  SiMongodb, 
-  SiPostman, 
-  SiC,
-  SiNextdotjs,
-  SiTailwindcss,
-  SiDotnet,
-  SiExpress,
-  SiFirebase,
-  SiBlender,
-  SiAdobephotoshop,
-  SiCanva,
-  SiGimp
+import {
+  SiMysql, SiMongodb, SiC, SiNextdotjs, SiTailwindcss, SiDotnet,
+  SiExpress, SiFirebase, SiBlender, SiCanva, SiGimp
 } from "react-icons/si";
+import { DiPhotoshop } from "react-icons/di";
+import "./Skills.css";
+
+const categoriesData = [
+  {
+    id: "Frontend",
+    title: "Crafting visual experiences",
+    desc: "Design systems, SSR/ISR, performance budgets, and UX polish",
+    skills: [
+      { name: "HTML5", icon: <FaHtml5 />, color: "#E34F26" },
+      { name: "CSS3", icon: <FaCss3Alt />, color: "#1572B6" },
+      { name: "JavaScript", icon: <FaJs />, color: "#F7DF1E" },
+      { name: "ReactJS", icon: <FaReact />, color: "#61DAFB" },
+      { name: "Next.js", icon: <SiNextdotjs />, color: "#FFFFFF" },
+      { name: "Tailwind", icon: <SiTailwindcss />, color: "#06B6D4" },
+    ]
+  },
+  {
+    id: "Backend",
+    title: "Powering the core logic",
+    desc: "Developing robust APIs, microservices, and server-side applications.",
+    skills: [
+      { name: "Node.js", icon: <FaNodeJs />, color: "#339933" },
+      { name: ".NET", icon: <SiDotnet />, color: "#512BD4" },
+      { name: "Java", icon: <FaJava />, color: "#007396" },
+      { name: "Python", icon: <FaPython />, color: "#3776AB" },
+      { name: "PHP", icon: <FaPhp />, color: "#777BB4" },
+    ]
+  },
+  {
+    id: "Database",
+    title: "Structuring the data",
+    desc: "Designing schemas, optimizing queries, and managing data storage.",
+    skills: [
+      { name: "MySQL", icon: <SiMysql />, color: "#4479A1" },
+      { name: "MongoDB", icon: <SiMongodb />, color: "#47A248" },
+      { name: "Firebase", icon: <SiFirebase />, color: "#FFCA28" },
+    ]
+  },
+
+  {
+    id: "Tools",
+    title: "Ship fast, keep quality",
+    desc: "Version control, design tools, and collaboration workflows.",
+    skills: [
+      { name: "Git", icon: <FaGitAlt />, color: "#F05032" },
+      { name: "Figma", icon: <FaFigma />, color: "#F24E1E" },
+      { name: "Blender", icon: <SiBlender />, color: "#F5792A" },
+      { name: "Photoshop", icon: <DiPhotoshop />, color: "#31A8FF" },
+      { name: "Canva", icon: <SiCanva />, color: "#00C4CC" },
+      { name: "GIMP", icon: <SiGimp />, color: "#5C5543" },
+    ]
+  },
+  {
+    id: "Soft Skills",
+    title: "The human element",
+    desc: "Communication, problem solving, and effective teamwork.",
+    skills: [
+      { name: "Teamwork", icon: <FaUsers />, color: "#00D9C0" },
+      { name: "Problem Solving", icon: <FaLightbulb />, color: "#F1C40F" },
+      { name: "Time Management", icon: <FaClock />, color: "#E67E22" },
+    ]
+  }
+];
 
 function Skills() {
-  const skillColors: { [key: string]: string } = {
-    "HTML5": "#E34F26",
-    "CSS3": "#1572B6",
-    "JavaScript": "#F7DF1E",
-    "ReactJS": "#61DAFB",
-    "NextJS": "#FFFFFF",
-    "Tailwind CSS": "#06B6D4",
-    "Bootstrap": "#7952B3",
-    "Node.js": "#339933",
-    "Ballerina": "#57D9A3",
-    ".NET": "#512BD4",
-    "ExpressJS": "#FFFFFF",
-    "Python": "#3776AB",
-    "Java": "#007396",
-    "PHP": "#777BB4",
-    "MySQL": "#4479A1",
-    "MongoDB": "#47A248",
-    "Firebase": "#FFCA28",
-    "C": "#A8B9CC",
-    "Git": "#F05032",
-    "Figma": "#F24E1E",
-    "Blender": "#F5792A",
-    "Photoshop": "#31A8FF",
-    "Canva": "#00C4CC",
-    "GIMP": "#5C5543",
-    "Teamwork": "#00D9C0",
-    "Problem Solving": "#F1C40F",
-    "Time Management": "#E67E22"
-  };
+  const [activeTab, setActiveTab] = useState("All");
+  const [searchQuery, setSearchQuery] = useState("");
 
-  const container = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.1,
-      }
-    }
-  };
+  const categoriesList = ["All", "Frontend", "Backend", "Database", "Programming", "Tools", "Soft Skills"];
 
-  const itemFade = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { 
-      opacity: 1, 
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" as any }
-    }
-  };
-
-  const SkillTag = ({ icon, name }: { icon: React.ReactNode, name: string }) => {
-    const color = skillColors[name] || "#00d9c0";
-    return (
-      <span className="skill-tag" style={{ borderLeft: `3px solid ${color}` }}>
-        <span className="tag-icon" style={{ color }}>{icon}</span>
-        {name}
-      </span>
-    );
-  };
+  // Filter based on active tab and search query
+  const filteredData = categoriesData.map(cat => {
+    return {
+      ...cat,
+      skills: cat.skills.filter(s => s.name.toLowerCase().includes(searchQuery.toLowerCase()))
+    };
+  }).filter(cat => {
+    if (activeTab !== "All" && cat.id !== activeTab) return false;
+    // if a tab is selected or all is selected, only show categories that have matching skills
+    return cat.skills.length > 0;
+  });
 
   return (
     <>
+      <CustomCursor />
       <Navbar />
+      <div className="noise-overlay"></div>
 
-      <section className="skills-page">
-        <motion.h1 
-          className="skills-title"
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
-          My <span>Skills</span>
-        </motion.h1>
+      <section className="skills-page-wrapper">
+        <div className="container">
 
-        <motion.div 
-          className="skills-grid"
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-        >
-          <motion.div className="skill-card frontend" variants={itemFade}>
-            <h2>Frontend</h2>
-            <div className="skill-tags">
-              <SkillTag icon={<FaHtml5 />} name="HTML5" />
-              <SkillTag icon={<FaCss3Alt />} name="CSS3" />
-              <SkillTag icon={<FaJs />} name="JavaScript" />
-              <SkillTag icon={<FaReact />} name="ReactJS" />
-              <SkillTag icon={<SiNextdotjs />} name="NextJS" />
-              <SkillTag icon={<SiTailwindcss />} name="Tailwind CSS" />
-              <SkillTag icon={<FaBootstrap />} name="Bootstrap" />
-            </div>
+          <motion.h1
+            className="skills-page-title"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+          >
+            Technical <span>Skills</span>
+          </motion.h1>
+
+          <motion.div
+            className="mac-window-container"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+          >
+            {/* Sidebar */}
+            <aside className="mac-sidebar">
+
+              {/* Traffic Lights */}
+              <div className="mac-controls">
+                <span className="mac-dot red"></span>
+                <span className="mac-dot yellow"></span>
+                <span className="mac-dot green"></span>
+              </div>
+
+              {/* Search */}
+              <div className="mac-search">
+                <FiSearch className="search-icon" />
+                <input
+                  type="text"
+                  placeholder="My Skill Store"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+              </div>
+
+              <div className="mac-categories-label">CATEGORIES</div>
+
+              <ul className="mac-category-list">
+                {categoriesList.map(cat => (
+                  <li
+                    key={cat}
+                    className={`mac-cat-item ${activeTab === cat ? "active" : ""}`}
+                    onClick={() => {
+                      setActiveTab(cat);
+                      setSearchQuery(""); // Clear search when switching tabs
+                    }}
+                  >
+                    {cat}
+                  </li>
+                ))}
+              </ul>
+
+              {/* Profile Badge */}
+              <div className="mac-profile">
+                <img src={profileImg} alt="Anjana" className="profile-pic" />
+                <span className="profile-name">Anjana</span>
+              </div>
+
+            </aside>
+
+            {/* Content Area */}
+            <main className="mac-content">
+
+              <div className="mac-content-header">
+                <h2>{activeTab === "All" ? (searchQuery ? "Search Results" : "All Skills") : activeTab}</h2>
+                <div className="updated-badge">Updated 2026</div>
+              </div>
+
+              <div className="mac-scroll-area">
+                <AnimatePresence mode="popLayout">
+                  {filteredData.map(category => (
+                    <motion.div
+                      key={category.id}
+                      className="skill-group"
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, scale: 0.95 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      <div className="skill-group-tag">{category.id.toUpperCase()}</div>
+                      <h3 className="skill-group-title">{category.title}</h3>
+                      <p className="skill-group-desc">{category.desc}</p>
+
+                      <div className="skill-icon-grid">
+                        {category.skills.map(skill => (
+                          <div
+                            key={skill.name}
+                            className="skill-icon-box"
+                            title={skill.name}
+                          >
+                            <span style={{ color: skill.color }}>{skill.icon}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
+                  ))}
+
+                  {filteredData.length === 0 && (
+                    <motion.div
+                      className="no-skills-found"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                    >
+                      <p>No skills found matching "{searchQuery}"</p>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+
+            </main>
           </motion.div>
 
-          <motion.div className="skill-card backend" variants={itemFade}>
-            <h2>Backend</h2>
-            <div className="skill-tags">
-              <SkillTag icon={<FaNodeJs />} name="Node.js" />
-              <SkillTag icon={<FaCode />} name="Ballerina" />
-              <SkillTag icon={<SiDotnet />} name=".NET" />
-              <SkillTag icon={<SiExpress />} name="ExpressJS" />
-              <SkillTag icon={<FaPython />} name="Python" />
-              <SkillTag icon={<FaJava />} name="Java" />
-              <SkillTag icon={<FaPhp />} name="PHP" />
-            </div>
-          </motion.div>
-
-          <motion.div className="skill-card database" variants={itemFade}>
-            <h2>Database</h2>
-            <div className="skill-tags">
-              <SkillTag icon={<SiMysql />} name="MySQL" />
-              <SkillTag icon={<SiMongodb />} name="MongoDB" />
-              <SkillTag icon={<SiFirebase />} name="Firebase" />
-            </div>
-          </motion.div>
-
-          <motion.div className="skill-card programming" variants={itemFade}>
-            <h2>Programming</h2>
-            <div className="skill-tags">
-              <SkillTag icon={<SiC />} name="C" />
-              <SkillTag icon={<FaJava />} name="Java" />
-              <SkillTag icon={<FaPython />} name="Python" />
-              <SkillTag icon={<FaJs />} name="JavaScript" />
-            </div>
-          </motion.div>
-
-          <motion.div className="skill-card tools" variants={itemFade}>
-            <h2>Tools</h2>
-            <div className="skill-tags">
-              <SkillTag icon={<FaGitAlt />} name="Git" />
-              <SkillTag icon={<FaFigma />} name="Figma" />
-              <SkillTag icon={<SiBlender />} name="Blender" />
-              <SkillTag icon={<SiAdobephotoshop />} name="Photoshop" />
-              <SkillTag icon={<SiCanva />} name="Canva" />
-              <SkillTag icon={<SiGimp />} name="GIMP" />
-            </div>
-          </motion.div>
-
-          <motion.div className="skill-card soft-skills" variants={itemFade}>
-            <h2>Soft Skills</h2>
-            <div className="skill-tags">
-              <SkillTag icon={<FaUsers />} name="Teamwork" />
-              <SkillTag icon={<FaLightbulb />} name="Problem Solving" />
-              <SkillTag icon={<FaClock />} name="Time Management" />
-            </div>
-          </motion.div>
-        </motion.div>
+        </div>
       </section>
     </>
   );
 }
 
-export default Skills;
+export default Skills;

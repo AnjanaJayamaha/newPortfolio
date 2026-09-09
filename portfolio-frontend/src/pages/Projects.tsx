@@ -113,17 +113,22 @@ function Projects() {
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
-              className="project-modal-content"
+              className="mac-modal"
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
               animate={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <button className="close-modal" onClick={() => setSelectedProject(null)}>
-                <FaTimes />
-              </button>
+              <div className="mac-modal-header">
+                <div className="mac-modal-controls">
+                  <span className="mac-dot red" onClick={() => setSelectedProject(null)}></span>
+                  <span className="mac-dot yellow"></span>
+                  <span className="mac-dot green"></span>
+                </div>
+                <div className="mac-modal-title">Project Details</div>
+              </div>
 
-              <div className="modal-body">
+              <div className="mac-modal-body">
                 <div className="modal-media-section">
                   {selectedProject.isMaintenance && (
                     <div className="modal-maintenance-overlay">
@@ -132,7 +137,15 @@ function Projects() {
                     </div>
                   )}
                   {selectedProject.videoUrl ? (
-                    <video controls autoPlay>
+                    <video 
+                      controls 
+                      autoPlay 
+                      onLoadedMetadata={(e) => {
+                        if (selectedProject.title === "ANJ Chatbot") {
+                          e.currentTarget.playbackRate = 1.5;
+                        }
+                      }}
+                    >
                       <source src={`/src/assets/${selectedProject.videoUrl}`} type="video/mp4" />
                     </video>
                   ) : selectedProject.imageUrl ? (

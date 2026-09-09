@@ -5,19 +5,24 @@ import Contact from "./pages/Contact";
 import Skills from "./pages/Skills";
 import Education from "./pages/Education";
 import Projects from "./pages/Projects";
-import Background from "./components/Background";
+import Achievements from "./pages/Achievements";
+import CustomCursor from "./components/CustomCursor";
 import "./App.css";
 
 function App() {
   return (
     <div className="app">
-      <Background />
+      <CustomCursor />
+      {/* Noise Overlay Effect */}
+      <div className="noise-overlay"></div>
+      
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/skills" element={<Skills />} />
         <Route path="/education" element={<Education />} />
+        <Route path="/achievements" element={<Achievements />} />
         <Route path="/projects" element={<Projects />} />
       </Routes>
     </div>

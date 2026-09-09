@@ -1,47 +1,13 @@
-import { useState } from "react";
-import { FaUser, FaMapMarkerAlt, FaEnvelope, FaPhone } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp, FaMapMarkerAlt, FaPhone, FaCalendarAlt, FaCopy } from "react-icons/fa";
+import { FiArrowUpRight } from "react-icons/fi";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
+import "./Contact.css"; // Ensure this is imported
 
 function Contact() {
-  const [formData, setFormData] = useState({
-    fullName: "",
-    email: "",
-    subject: "",
-    message: ""
-  });
-  const [status, setStatus] = useState<{ type: 'success' | 'error' | null, message: string }>({ type: null, message: "" });
-  const [loading, setLoading] = useState(false);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus({ type: null, message: "" });
-
-    try {
-      console.log("Sending contact message:", formData);
-      const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:5243";
-      const response = await fetch(`${apiBaseUrl}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData)
-      });
-
-      console.log("Response status:", response.status);
-      if (response.ok) {
-        setStatus({ type: 'success', message: "Message sent successfully!" });
-        setFormData({ fullName: "", email: "", subject: "", message: "" });
-      } else {
-        const errorData = await response.json().catch(() => ({}));
-        console.error("Server error:", errorData);
-        throw new Error("Failed to send message");
-      }
-    } catch (error: any) {
-      console.error("Submission error:", error);
-      setStatus({ type: 'error', message: "Backend Error: Could not reach the server. Please check your connection or try again later." });
-    } finally {
-      setLoading(false);
-    }
+  const handleCopy = (text: string) => {
+    navigator.clipboard.writeText(text);
+    // Could add a toast notification here
   };
 
   const itemFade = {
@@ -64,116 +30,110 @@ function Contact() {
   };
 
   return (
-    <>
+    <div className="contact-page-wrapper">
       <Navbar />
 
-      <section className="contact">
+      <section className="contact-hero">
         <motion.div
-          className="contact-header"
+          className="contact-header-new"
           initial={{ opacity: 0, y: -30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "backOut" as const }}
         >
-          <h1>Get In <span>Touch</span></h1>
-          <p>Looking for a new collaborator? Or just want to say hi? My inbox is always open.</p>
+          <p className="contact-subtitle">
+            I am open to distributed systems, backend engineering, and high-performance<br/>
+            full-stack opportunities. Connect directly on WhatsApp or professional channels.
+          </p>
         </motion.div>
 
         <motion.div
-          className="contact-container"
+          className="contact-grid"
           variants={container}
           initial="hidden"
           animate="visible"
         >
-          <div className="contact-left">
-            <motion.div className="contact-card" variants={itemFade}>
-              <FaUser />
-              <p>Anjana Jayamaha</p>
+          {/* LEFT: WhatsApp Card */}
+          <motion.div className="wa-card" variants={itemFade}>
+            <div className="wa-card-header">
+              <div className="wa-icon-large">
+                <FaWhatsapp />
+              </div>
+              <div className="wa-header-text">
+                <span className="wa-badge">● Direct Messaging Channel</span>
+                <h2>Instant WhatsApp Chat</h2>
+              </div>
+            </div>
+
+            <p className="wa-description">
+              Skip email delays and connect directly for engineering discussions, freelance builds, or recruitment inquiries.
+            </p>
+
+            <div className="wa-qr-box">
+              <div className="qr-placeholder">
+                <img src={`https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent('https://wa.me/94760248263')}`} alt="WhatsApp QR Code" />
+              </div>
+              <div className="qr-instructions">
+                <div className="qr-scan-title">
+                  <span>[⯪]</span> Scan from Phone or Tap Below
+                </div>
+                <p>Point your phone camera to start a chat with pre-loaded context, or click the direct button below.</p>
+                <div className="wa-number">+94 76 024 8263</div>
+              </div>
+            </div>
+
+            <a href="https://wa.me/94760248263" target="_blank" rel="noopener noreferrer" className="wa-button">
+              <FaWhatsapp /> Open WhatsApp Chat <FiArrowUpRight />
+            </a>
+          </motion.div>
+
+          {/* RIGHT: Direct Contact & Socials */}
+          <div className="contact-right-column">
+            
+            <motion.div className="direct-contact-card" variants={itemFade}>
+              <h3 className="card-section-title">▶ Direct Contact</h3>
+              
+              <div className="contact-list">
+                <div className="contact-item">
+                  <div className="ci-icon"><FaEnvelope /></div>
+                  <span className="ci-text">maduwanthaaselagra@gmail.com</span>
+                  <button className="ci-copy" onClick={() => handleCopy("maduwanthaaselagra@gmail.com")}><FaCopy /></button>
+                </div>
+
+                <div className="contact-item">
+                  <div className="ci-icon"><FaPhone /></div>
+                  <span className="ci-text">+94 76 024 8263</span>
+                  <button className="ci-copy" onClick={() => handleCopy("+94760248263")}><FaCopy /></button>
+                </div>
+
+                <div className="contact-item location-item">
+                  <div className="ci-icon"><FaMapMarkerAlt /></div>
+                  <span className="ci-text">Colombo, Sri Lanka</span>
+                </div>
+
+                <a href="#" className="schedule-call-btn">
+                  <div className="schedule-left">
+                    <FaCalendarAlt /> Schedule 15-Min Intro Call
+                  </div>
+                  <FiArrowUpRight />
+                </a>
+              </div>
             </motion.div>
 
-            <motion.div className="contact-card" variants={itemFade}>
-              <FaMapMarkerAlt />
-              <p>Moratuwa, Sri Lanka</p>
+            <motion.div className="professional-presence-card" variants={itemFade}>
+              <h3 className="card-section-title">▶ Professional Presence</h3>
+              <div className="presence-socials">
+                <a href="#" className="presence-box"><FaGithub /></a>
+                <a href="#" className="presence-box"><FaLinkedin /></a>
+                <a href="#" className="presence-box"><FaEnvelope /></a>
+                <a href="#" className="presence-box"><FaWhatsapp /></a>
+              </div>
             </motion.div>
 
-            <motion.div className="contact-card" variants={itemFade}>
-              <FaEnvelope />
-              <p>anjanajayamaha21@gmail.com</p>
-            </motion.div>
-
-            <motion.div className="contact-card" variants={itemFade}>
-              <FaPhone />
-              <p>+94 742062388</p>
-            </motion.div>
-
-            <motion.div className="service-tags" variants={itemFade}>
-              <span>Frontend Developer</span>
-              <span>Backend Developer</span>
-              <span>UI/UX Designer</span>
-              <span>Full Stack Developer</span>
-            </motion.div>
           </div>
 
-          <motion.div
-            className="contact-right"
-            variants={itemFade}
-          >
-            <h2>Message Me</h2>
-            <form className="contact-form" onSubmit={handleSubmit}>
-              <label>FULL NAME</label>
-              <input 
-                type="text" 
-                placeholder="Sara Doe"
-                required
-                value={formData.fullName}
-                onChange={(e) => setFormData({...formData, fullName: e.target.value})}
-              />
-
-              <label>EMAIL ADDRESS</label>
-              <input 
-                type="email" 
-                placeholder="sara.example@gmail.com"
-                required
-                value={formData.email}
-                onChange={(e) => setFormData({...formData, email: e.target.value})}
-              />
-
-              <label>SUBJECT</label>
-              <input 
-                type="text" 
-                placeholder="Subject"
-                required
-                value={formData.subject}
-                onChange={(e) => setFormData({...formData, subject: e.target.value})}
-              />
-
-              <label>YOUR MESSAGE</label>
-              <textarea 
-                placeholder="Tell me..." 
-                rows={5}
-                required
-                value={formData.message}
-                onChange={(e) => setFormData({...formData, message: e.target.value})}
-              ></textarea>
-
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                disabled={loading}
-              >
-                {loading ? "Sending..." : "Send Message"}
-              </motion.button>
-              
-              {status.type && (
-                <div className={`form-status ${status.type}`}>
-                  {status.message}
-                </div>
-              )}
-            </form>
-          </motion.div>
         </motion.div>
       </section>
-    </>
+    </div>
   );
 }
 

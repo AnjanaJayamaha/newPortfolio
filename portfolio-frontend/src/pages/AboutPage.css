@@ -1,0 +1,433 @@
+/* =====================================
+   ABOUT PAGE LAYOUT
+===================================== */
+.about-page {
+  position: relative;
+  padding: 10rem 0 6rem;
+  min-height: 100vh;
+  z-index: 5; 
+}
+
+.about-mesh-bg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: radial-gradient(var(--color-border) 1.5px, transparent 1.5px);
+  background-size: 35px 35px;
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: -1;
+  -webkit-mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+  mask-image: radial-gradient(ellipse at center, black 0%, transparent 80%);
+}
+
+.about-page-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  margin-bottom: 6rem; /* Spacing before skills section */
+}
+
+.about-page-text {
+  max-width: 800px;
+  width: 100%;
+}
+
+.about-stats {
+  justify-content: center;
+}
+
+.about-bento-grid {
+  flex: 1.2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: minmax(160px, auto);
+  gap: 1.5rem;
+}
+
+.bento-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 24px;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.bento-card:hover {
+  transform: translateY(-8px);
+  border-color: var(--color-accent);
+  box-shadow: 0 20px 40px rgba(201, 102, 44, 0.08);
+}
+
+.card-wide {
+  grid-column: span 2;
+  flex-direction: row;
+  align-items: center;
+}
+
+.bento-icon-wrapper {
+  width: 50px;
+  height: 50px;
+  min-width: 50px;
+  border-radius: 14px;
+  background: rgba(201, 102, 44, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bento-icon {
+  font-size: 1.5rem;
+  color: var(--color-accent);
+}
+
+.bento-title {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  margin-bottom: 0.5rem;
+}
+
+.bento-desc {
+  font-size: 0.9rem;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* =====================================
+   SKILLS MERGED SECTION
+===================================== */
+.skills-merged-wrapper {
+  margin-top: 5rem;
+  padding-top: 5rem;
+  border-top: 1px dashed var(--color-border);
+}
+
+.skills-page-title {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  margin-bottom: 2.5rem;
+  color: var(--color-primary-dark);
+  text-align: center;
+}
+
+.skills-page-title span {
+  color: var(--color-accent);
+}
+
+/* =====================================
+   MAC WINDOW CONTAINER
+===================================== */
+.mac-window-container {
+  display: flex;
+  background-color: #121212;
+  background-image: 
+    linear-gradient(rgba(255, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 30px 30px;
+  background-position: center center;
+  border-radius: 16px;
+  border: 1px solid #2a2a2a;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+  height: 650px;
+  overflow: hidden;
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  text-align: left;
+}
+
+.mac-sidebar {
+  width: 260px;
+  background-color: rgba(26, 26, 26, 0.6);
+  backdrop-filter: blur(10px);
+  border-right: 1px solid #2a2a2a;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.mac-controls {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 2rem;
+}
+
+.mac-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.mac-dot.red { background-color: #ff5f56; }
+.mac-dot.yellow { background-color: #ffbd2e; }
+.mac-dot.green { background-color: #27c93f; }
+
+.mac-search {
+  display: flex;
+  align-items: center;
+  background-color: #222;
+  border-radius: 8px;
+  padding: 0.6rem 0.8rem;
+  margin-bottom: 2rem;
+  border: 1px solid transparent;
+  transition: border 0.2s;
+}
+
+.mac-search:focus-within {
+  border-color: #06b6d4; 
+}
+
+.search-icon {
+  color: #888;
+  margin-right: 0.5rem;
+}
+
+.mac-search input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  outline: none;
+  width: 100%;
+  font-size: 0.9rem;
+}
+.mac-search input::placeholder {
+  color: #888;
+}
+
+.mac-categories-label {
+  font-size: 0.75rem;
+  color: #888;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+  padding-left: 0.5rem;
+}
+
+.mac-category-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+  flex: 1;
+}
+
+.mac-cat-item {
+  padding: 0.6rem 1rem;
+  border-radius: 8px;
+  color: #aaa;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.mac-cat-item:hover {
+  background-color: #222;
+  color: #fff;
+}
+
+.mac-cat-item.active {
+  background-color: rgba(6, 182, 212, 0.1);
+  color: #06b6d4;
+  border-color: #06b6d4;
+  box-shadow: inset 0 0 10px rgba(6, 182, 212, 0.1);
+}
+
+.mac-profile {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding-top: 1.5rem;
+  margin-top: 1rem;
+  border-top: 1px solid #2a2a2a;
+}
+
+.profile-pic {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid #333;
+}
+
+.profile-name {
+  font-weight: 500;
+  font-size: 0.95rem;
+  color: #ddd;
+}
+
+.mac-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  background-color: rgba(17, 17, 17, 0.5);
+  backdrop-filter: blur(10px);
+  padding: 2.5rem 3rem;
+  position: relative;
+}
+
+.mac-content-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid #222;
+  padding-bottom: 1.5rem;
+}
+
+.mac-content-header h2 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin: 0;
+  color: #fff;
+}
+
+.updated-badge {
+  background-color: rgba(6, 182, 212, 0.15);
+  color: #fff;
+  border: 1px solid #06b6d4;
+  padding: 0.4rem 1.2rem;
+  border-radius: 20px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 0 20px rgba(6, 182, 212, 0.5);
+  text-shadow: 0 0 5px rgba(255,255,255,0.5);
+}
+
+.mac-scroll-area {
+  flex: 1;
+  overflow-y: auto;
+  padding-right: 1rem;
+}
+
+.mac-scroll-area::-webkit-scrollbar {
+  width: 6px;
+}
+.mac-scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+.mac-scroll-area::-webkit-scrollbar-thumb {
+  background-color: #333;
+  border-radius: 10px;
+}
+
+.skill-group {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 1.8rem;
+  margin-bottom: 1.5rem;
+  border: 1px solid #222;
+  transition: border-color 0.3s ease;
+}
+
+.skill-group:hover {
+  border-color: #333;
+}
+
+.skill-group-tag {
+  display: inline-block;
+  background-color: rgba(6, 182, 212, 0.1);
+  color: #06b6d4;
+  padding: 0.3rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.skill-group-title {
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  color: #eee;
+}
+
+.skill-group-desc {
+  color: #999;
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
+  line-height: 1.5;
+}
+
+.skill-icon-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
+}
+
+.skill-icon-box {
+  width: 45px;
+  height: 45px;
+  background-color: #222;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.3rem;
+  border: 1px solid #2d2d2d;
+  transition: all 0.2s ease;
+  cursor: pointer;
+}
+
+.skill-icon-box:hover {
+  transform: translateY(-3px);
+  border-color: #06b6d4;
+  background-color: #2a2a2a;
+}
+
+.no-skills-found {
+  color: #888;
+  text-align: center;
+  padding: 3rem 0;
+  font-size: 1.1rem;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+@media (max-width: 1024px) {
+  .about-page-container {
+    flex-direction: column;
+    gap: 4rem;
+  }
+  .about-page-text {
+    max-width: 100%;
+    position: relative;
+    top: 0;
+  }
+}
+
+@media (max-width: 900px) {
+  .mac-window-container {
+    flex-direction: column;
+    height: auto;
+    min-height: 600px;
+  }
+  .mac-sidebar {
+    width: 100%;
+    border-right: none;
+    border-bottom: 1px solid #2a2a2a;
+  }
+  .mac-category-list {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 650px) {
+  .about-bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .card-wide {
+    grid-column: span 1;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

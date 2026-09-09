@@ -1,0 +1,319 @@
+.contact-page-wrapper {
+  min-height: 100vh;
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 50px;
+}
+
+.contact-hero {
+  max-width: 1000px;
+  width: 90%;
+  margin: 0 auto;
+}
+
+.contact-header-new {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.contact-subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+@media (max-width: 850px) {
+  .contact-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Base Card Styles */
+.wa-card, .direct-contact-card, .professional-presence-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 1.8rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+:root[data-theme="light"] .wa-card,
+:root[data-theme="light"] .direct-contact-card,
+:root[data-theme="light"] .professional-presence-card {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+}
+
+/* Left: WhatsApp Card */
+.wa-card {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+.wa-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: #10B981; /* WhatsApp green */
+}
+
+.wa-card-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.wa-icon-large {
+  width: 50px;
+  height: 50px;
+  background: rgba(16, 185, 129, 0.1);
+  color: #10B981;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+}
+
+.wa-header-text h2 {
+  font-size: 1.5rem;
+  margin: 0;
+  color: var(--color-text-dark);
+}
+
+.wa-badge {
+  display: inline-block;
+  background: rgba(16, 185, 129, 0.15);
+  color: #10B981;
+  padding: 0.2rem 0.6rem;
+  border-radius: 20px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.wa-description {
+  color: var(--color-text-muted);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 1.5rem;
+}
+
+.wa-qr-box {
+  background: rgba(0, 0, 0, 0.2);
+  border-radius: 16px;
+  padding: 1.2rem;
+  display: flex;
+  gap: 1.2rem;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+:root[data-theme="light"] .wa-qr-box {
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.qr-placeholder {
+  width: 100px;
+  height: 100px;
+  background: #FFF;
+  border-radius: 10px;
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.qr-placeholder img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.qr-instructions {
+  flex: 1;
+}
+
+.qr-scan-title {
+  color: #10B981;
+  font-size: 0.8rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.qr-instructions p {
+  font-size: 0.8rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0.5rem;
+}
+
+.wa-number {
+  font-weight: 600;
+  color: var(--color-text-dark);
+  font-size: 0.9rem;
+}
+
+.wa-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #10B981;
+  color: #FFF;
+  padding: 0.9rem;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: background 0.2s;
+}
+
+.wa-button:hover {
+  background: #059669;
+}
+
+/* Right Column */
+.contact-right-column {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.card-section-title {
+  font-size: 1rem;
+  color: var(--color-text-dark);
+  margin-bottom: 1.2rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.contact-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 0.8rem 1rem;
+  border-radius: 12px;
+  gap: 1rem;
+}
+
+:root[data-theme="light"] .contact-item {
+  background: rgba(0, 0, 0, 0.02);
+  border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.ci-icon {
+  color: #38BDF8;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ci-text {
+  flex: 1;
+  font-size: 0.9rem;
+  color: var(--color-text-dark);
+}
+
+.ci-copy {
+  background: transparent;
+  border: none;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  transition: color 0.2s;
+}
+
+.ci-copy:hover {
+  color: var(--color-text-dark);
+}
+
+.location-item .ci-icon {
+  color: #10B981; /* Just matching the green for location */
+}
+
+.schedule-call-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  padding: 1rem;
+  border-radius: 12px;
+  color: var(--color-text-dark);
+  text-decoration: none;
+  font-weight: 500;
+  transition: background 0.2s;
+  margin-top: 0.5rem;
+}
+
+.schedule-call-btn:hover {
+  background: rgba(16, 185, 129, 0.2);
+}
+
+.schedule-left {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+}
+
+.schedule-left svg {
+  color: #38BDF8;
+}
+
+/* Professional Presence */
+.presence-socials {
+  display: flex;
+  gap: 1rem;
+}
+
+.presence-box {
+  width: 45px;
+  height: 45px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--color-text-muted);
+  font-size: 1.1rem;
+  transition: all 0.2s;
+}
+
+:root[data-theme="light"] .presence-box {
+  background: rgba(0, 0, 0, 0.03);
+  border-color: rgba(0, 0, 0, 0.1);
+}
+
+.presence-box:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: var(--color-text-dark);
+  transform: translateY(-2px);
+}
+
+:root[data-theme="light"] .presence-box:hover {
+  background: rgba(0, 0, 0, 0.06);
+}
