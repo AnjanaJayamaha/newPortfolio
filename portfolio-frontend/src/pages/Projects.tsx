@@ -9,6 +9,8 @@ function Projects() {
   const [selectedProject, setSelectedProject] = useState<any>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 6;
 
   useEffect(() => {
     const fetchProjects = async () => {
@@ -43,62 +45,82 @@ function Projects() {
   };
 
 
+  const indexOfLastProject = currentPage * projectsPerPage;
+  const indexOfFirstProject = indexOfLastProject - projectsPerPage;
+  const currentProjects = projectsData.slice(indexOfFirstProject, indexOfLastProject);
+  const totalPages = Math.ceil(projectsData.length / projectsPerPage);
+
+  const paginate = (pageNumber: number) => setCurrentPage(pageNumber);
+
   return (
     <>
-      <Navbar />
-
       <section className="projects-page">
         <motion.h1
           className="projects-title"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
         >
-          My <span>Projects</span>
+          Featured <span>Projects</span>
         </motion.h1>
 
-        {loading ? (
-          <div className="loading">Loading Projects...</div>
-        ) : error ? (
-          <div className="error">Error: {error}</div>
-        ) : (
-          <motion.div
-            className="projects-grid"
-            variants={container}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-          >
-            {projectsData.map((project) => (
-              <motion.div
-                key={project.id}
-                className="project-card"
-                variants={itemFade}
-                onClick={() => setSelectedProject(project)}
-                style={{ cursor: "pointer" }}
-              >
-                <div className="project-media">
-                  {project.isMaintenance && (
-                    <div className="maintenance-badge">Under Maintenance</div>
-                  )}
-                  {project.videoUrl ? (
-                    <video muted playsInline loop autoPlay>
-                      <source src={`/src/assets/${project.videoUrl}`} type="video/mp4" />
-                    </video>
-                  ) : project.imageUrl ? (
-                    <img src={`/src/assets/${project.imageUrl}`} alt={project.title} />
-                  ) : (
-                    <div className="project-placeholder">
-                      <span>No Media Available</span>
-                    </div>
-                  )}
-                </div>
-                <div className="project-info">
-                  <h2>{project.title}</h2>
-                  <p>{project.description}</p>
-                </div>
-              </motion.div>
-            ))}
-          </motion.div>
+        {loading && <p className="projects-status">Loading projects...</p>}
+        {error && <p className="projects-error">{error}</p>}
+
+        {!loading && !error && (
+          <>
+            <motion.div
+              className="projects-grid"
+              variants={container}
+              initial="hidden"
+              animate="visible"
+            >
+              {currentProjects.map((project) => (
+                <motion.div
+                  key={project.id}
+                  className="project-card"
+                  variants={itemFade}
+                  onClick={() => setSelectedProject(project)}
+                  style={{ cursor: "pointer" }}
+                >
+                  <div className="project-media">
+                    {project.isMaintenance && (
+                      <div className="maintenance-badge">Under Maintenance</div>
+                    )}
+                    {project.videoUrl ? (
+                      <video muted playsInline loop autoPlay>
+                        <source src={`/src/assets/${project.videoUrl}`} type="video/mp4" />
+                      </video>
+                    ) : project.imageUrl ? (
+                      <img src={`/src/assets/${project.imageUrl}`} alt={project.title} />
+                    ) : (
+                      <div className="project-placeholder">
+                        <span>No Media Available</span>
+                      </div>
+                    )}
+                  </div>
+                  <div className="project-info">
+                    <h2>{project.title}</h2>
+                    <p>{project.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Pagination Controls */}
+            {totalPages > 1 && (
+              <div className="pagination">
+                {Array.from({ length: totalPages }, (_, i) => i + 1).map(num => (
+                  <button
+                    key={num}
+                    onClick={() => paginate(num)}
+                    className={currentPage === num ? 'active' : ''}
+                  >
+                    {num}
+                  </button>
+                ))}
+              </div>
+            )}
+          </>
         )}
       </section>
 

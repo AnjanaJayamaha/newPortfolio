@@ -156,12 +156,6 @@ function Skills() {
                 ))}
               </ul>
 
-              {/* Profile Badge */}
-              <div className="mac-profile">
-                <img src={profileImg} alt="Anjana" className="profile-pic" />
-                <span className="profile-name">Anjana</span>
-              </div>
-
             </aside>
 
             {/* Content Area */}

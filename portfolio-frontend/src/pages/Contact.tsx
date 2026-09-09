@@ -1,14 +1,10 @@
-import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp, FaMapMarkerAlt, FaPhone, FaCalendarAlt, FaCopy } from "react-icons/fa";
+import { FaGithub, FaLinkedin, FaEnvelope, FaWhatsapp, FaMapMarkerAlt, FaPhone, FaCamera } from "react-icons/fa";
 import { FiArrowUpRight } from "react-icons/fi";
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
 import "./Contact.css"; // Ensure this is imported
 
 function Contact() {
-  const handleCopy = (text: string) => {
-    navigator.clipboard.writeText(text);
-    // Could add a toast notification here
-  };
 
   const itemFade = {
     hidden: { opacity: 0, y: 30 },
@@ -31,7 +27,6 @@ function Contact() {
 
   return (
     <div className="contact-page-wrapper">
-      <Navbar />
 
       <section className="contact-hero">
         <motion.div
@@ -40,8 +35,16 @@ function Contact() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "backOut" as const }}
         >
+          <motion.h1
+            className="skills-page-title"
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            style={{ marginBottom: '1.5rem', textAlign: 'center' }}
+          >
+            Get In <span>Touch</span>
+          </motion.h1>
           <p className="contact-subtitle">
-            I am open to distributed systems, backend engineering, and high-performance<br/>
+            I am open to distributed systems, backend engineering, and high-performance<br />
             full-stack opportunities. Connect directly on WhatsApp or professional channels.
           </p>
         </motion.div>
@@ -74,58 +77,49 @@ function Contact() {
               </div>
               <div className="qr-instructions">
                 <div className="qr-scan-title">
-                  <span>[⯪]</span> Scan from Phone or Tap Below
+                  <FaCamera /> Scan from Phone or Tap Below
                 </div>
                 <p>Point your phone camera to start a chat with pre-loaded context, or click the direct button below.</p>
-                <div className="wa-number">+94 76 024 8263</div>
+                <div className="wa-number">+94 74 206 2388</div>
               </div>
             </div>
 
-            <a href="https://wa.me/94760248263" target="_blank" rel="noopener noreferrer" className="wa-button">
+            <a href="https://wa.me/94742062388" target="_blank" rel="noopener noreferrer" className="wa-button">
               <FaWhatsapp /> Open WhatsApp Chat <FiArrowUpRight />
             </a>
           </motion.div>
 
           {/* RIGHT: Direct Contact & Socials */}
           <div className="contact-right-column">
-            
+
             <motion.div className="direct-contact-card" variants={itemFade}>
-              <h3 className="card-section-title">▶ Direct Contact</h3>
-              
+              <h3 className="card-section-title"> Direct Contact</h3>
+
               <div className="contact-list">
                 <div className="contact-item">
                   <div className="ci-icon"><FaEnvelope /></div>
-                  <span className="ci-text">maduwanthaaselagra@gmail.com</span>
-                  <button className="ci-copy" onClick={() => handleCopy("maduwanthaaselagra@gmail.com")}><FaCopy /></button>
+                  <a href="mailto:anjanajayamaha21@gmail.com" className="ci-text">anjanajayamaha21@gmail.com</a>
                 </div>
 
                 <div className="contact-item">
                   <div className="ci-icon"><FaPhone /></div>
-                  <span className="ci-text">+94 76 024 8263</span>
-                  <button className="ci-copy" onClick={() => handleCopy("+94760248263")}><FaCopy /></button>
+                  <a href="tel:+94742062388" className="ci-text">+94 74 206 2388</a>
                 </div>
 
                 <div className="contact-item location-item">
                   <div className="ci-icon"><FaMapMarkerAlt /></div>
-                  <span className="ci-text">Colombo, Sri Lanka</span>
+                  <span className="ci-text">Moratuwa, Sri Lanka</span>
                 </div>
-
-                <a href="#" className="schedule-call-btn">
-                  <div className="schedule-left">
-                    <FaCalendarAlt /> Schedule 15-Min Intro Call
-                  </div>
-                  <FiArrowUpRight />
-                </a>
               </div>
             </motion.div>
 
             <motion.div className="professional-presence-card" variants={itemFade}>
-              <h3 className="card-section-title">▶ Professional Presence</h3>
+              <h3 className="card-section-title">Professional Presence</h3>
               <div className="presence-socials">
-                <a href="#" className="presence-box"><FaGithub /></a>
-                <a href="#" className="presence-box"><FaLinkedin /></a>
-                <a href="#" className="presence-box"><FaEnvelope /></a>
-                <a href="#" className="presence-box"><FaWhatsapp /></a>
+                <a href="https://github.com/AnjanaJayamaha" target="_blank" rel="noopener noreferrer" className="presence-box"><FaGithub /></a>
+                <a href="https://www.linkedin.com/in/anjana-jayamaha-332a0b317/" target="_blank" rel="noopener noreferrer" className="presence-box"><FaLinkedin /></a>
+                <a href="mailto:anjanajayamaha21@gmail.com" className="presence-box"><FaEnvelope /></a>
+                <a href="https://wa.me/94742062388" target="_blank" rel="noopener noreferrer" className="presence-box"><FaWhatsapp /></a>
               </div>
             </motion.div>
 

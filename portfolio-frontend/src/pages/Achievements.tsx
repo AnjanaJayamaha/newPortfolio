@@ -14,11 +14,10 @@ const certificates = [
 function Achievements() {
   return (
     <div className="achievements-page">
-      <Navbar />
-      
+
       <main className="achievements-content">
         <div className="achievements-header">
-          <h1 className="title-heading">My Achievements & Education</h1>
+          <h1 className="skills-page-title">My  <span>Achievements & Education</span></h1>
           <p className="subtitle-text">
             A collection of my certifications, courses, and educational milestones.
           </p>
