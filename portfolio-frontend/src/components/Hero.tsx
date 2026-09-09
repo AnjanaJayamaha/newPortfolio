@@ -123,36 +123,44 @@ const Hero: React.FC = () => {
           </motion.p>
 
           <motion.div className="hero-cta" variants={itemVariants}>
-
             <a
-              href="/projects"
+              href="#projects"
               className="btn-primary"
             >
               Explore My Work
               <FiArrowUpRight />
             </a>
 
-            <a
-              href="/contact"
-              className="btn-secondary"
-            >
-              Let&apos;s Connect
-              <FaEnvelope />
-            </a>
+            <div className="hero-cta-secondary">
+              <a
+                href="#contact"
+                className="btn-secondary btn-small"
+              >
+                Let&apos;s Connect
+                <FaEnvelope />
+              </a>
 
+              <a
+                href="/Anjana_Jayamaha_CV.pdf"
+                download
+                className="btn-secondary btn-small"
+              >
+                Download CV
+              </a>
+            </div>
           </motion.div>
           
           <motion.div className="hero-social-boxes" variants={itemVariants}>
-            <a href="#" className="social-box" aria-label="GitHub">
+            <a href="https://github.com/AnjanaJayamaha" target="_blank" rel="noopener noreferrer" className="social-box" aria-label="GitHub">
               <FaGithub />
             </a>
-            <a href="#" className="social-box" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/in/anjana-jayamaha-332a0b317/" target="_blank" rel="noopener noreferrer" className="social-box" aria-label="LinkedIn">
               <FaLinkedin />
             </a>
-            <a href="#" className="social-box" aria-label="Email">
+            <a href="mailto:anjanajayamaha21@gmail.com" className="social-box" aria-label="Email">
               <FaEnvelope />
             </a>
-            <a href="#" className="social-box" aria-label="WhatsApp">
+            <a href="https://wa.me/94742062388" target="_blank" rel="noopener noreferrer" className="social-box" aria-label="WhatsApp">
               <FaWhatsapp />
             </a>
           </motion.div>

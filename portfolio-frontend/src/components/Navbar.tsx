@@ -1,51 +1,78 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { Menu, X, Sun, Moon } from "lucide-react";
 
 import logoA from "../assets/logo-a.png";
 
 function Navbar() {
-  const navigate = useNavigate();
   const [isOpen, setIsOpen] = useState(false);
   const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+  const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme);
     localStorage.setItem('theme', theme);
   }, [theme]);
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const sections = ["home", "about", "skills", "projects", "achievements", "contact"];
+      let current = "";
+      
+      for (const section of sections) {
+        const el = document.getElementById(section);
+        if (el) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= 120 && rect.bottom >= 120) {
+            current = section;
+          }
+        }
+      }
+      if (current) {
+        setActiveSection(current);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   const toggleTheme = () => {
     setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
   };
 
-  const goTo = (path: string) => {
-    navigate(path);
+  const scrollTo = (id: string) => {
     setIsOpen(false);
+    const element = document.getElementById(id);
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 80,
+        behavior: "smooth"
+      });
+      setActiveSection(id);
+    }
   };
 
   return (
     <header className="navbar-wrapper">
       <nav className="navbar">
-        <button className="nav-brand" onClick={() => goTo("/")}>
+        <button className="nav-brand" onClick={() => scrollTo("home")}>
           <img src={logoA} alt="A Logo" className="navbar-logo" />
           <span className="navbar-logo-text">NJ</span>
         </button>
 
         <ul className="nav-links">
-          <li onClick={() => goTo("/")}>Home</li>
-          <li onClick={() => goTo("/about")}>About</li>
-          <li onClick={() => goTo("/skills")}>Skills</li>
-          <li onClick={() => goTo("/projects")}>Projects</li>
-          <li onClick={() => goTo("/achievements")}>Achievements</li>
-          <li onClick={() => goTo("/contact")}>Contact</li>
+          <li className={activeSection === "home" ? "active" : ""} onClick={() => scrollTo("home")}>Home</li>
+          <li className={activeSection === "about" ? "active" : ""} onClick={() => scrollTo("about")}>About</li>
+          <li className={activeSection === "skills" ? "active" : ""} onClick={() => scrollTo("skills")}>Skills</li>
+          <li className={activeSection === "projects" ? "active" : ""} onClick={() => scrollTo("projects")}>Projects</li>
+          <li className={activeSection === "achievements" ? "active" : ""} onClick={() => scrollTo("achievements")}>Achievements</li>
+          <li className={activeSection === "contact" ? "active" : ""} onClick={() => scrollTo("contact")}>Contact</li>
         </ul>
         
         <div className="nav-right-actions">
           <button className="theme-toggle-btn" onClick={toggleTheme} aria-label="Toggle theme">
-            <div className={`theme-toggle-track ${theme === 'dark' ? 'dark' : 'light'}`}>
-              <div className="theme-toggle-thumb">
-                {theme === 'dark' ? <Moon size={14} color="#FFF" /> : <Sun size={14} color="#FFA500" />}
-              </div>
+            <div className="icon-wrapper">
+              {theme === 'dark' ? <Moon size={18} color="#EAEAEA" /> : <Sun size={18} color="#1F1511" />}
             </div>
           </button>
 
@@ -60,12 +87,12 @@ function Navbar() {
 
         {isOpen && (
           <div className="mobile-menu">
-            <button onClick={() => goTo("/")}>Home</button>
-            <button onClick={() => goTo("/about")}>About</button>
-            <button onClick={() => goTo("/skills")}>Skills</button>
-            <button onClick={() => goTo("/projects")}>Projects</button>
-            <button onClick={() => goTo("/achievements")}>Achievements</button>
-            <button onClick={() => goTo("/contact")}>Contact</button>
+            <button className={activeSection === "home" ? "active" : ""} onClick={() => scrollTo("home")}>Home</button>
+            <button className={activeSection === "about" ? "active" : ""} onClick={() => scrollTo("about")}>About</button>
+            <button className={activeSection === "skills" ? "active" : ""} onClick={() => scrollTo("skills")}>Skills</button>
+            <button className={activeSection === "projects" ? "active" : ""} onClick={() => scrollTo("projects")}>Projects</button>
+            <button className={activeSection === "achievements" ? "active" : ""} onClick={() => scrollTo("achievements")}>Achievements</button>
+            <button className={activeSection === "contact" ? "active" : ""} onClick={() => scrollTo("contact")}>Contact</button>
           </div>
         )}
       </nav>
