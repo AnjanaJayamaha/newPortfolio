@@ -25,12 +25,142 @@
   flex-direction: column;
   align-items: center;
   text-align: center;
-  margin-bottom: 6rem; /* Spacing before skills section */
+  max-width: 780px;
+  margin: 0 auto;
+  padding-bottom: 4rem;
+}
+
+.about-section-title {
+  text-align: center;
+  margin-bottom: 2.5rem !important;
 }
 
 .about-page-text {
   max-width: 800px;
   width: 100%;
+}
+
+/* =============================================
+   ABOUT LAYOUT: Two Columns
+============================================= */
+.about-layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  align-items: flex-start;
+  text-align: left;
+}
+
+@media (max-width: 850px) {
+  .about-layout-grid {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+}
+
+/* Left Column: Summary */
+.about-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.8;
+  color: var(--color-text-dark);
+}
+
+:root[data-theme="dark"] .about-left-col {
+  color: #EAEAEA;
+}
+
+/* Right Column: Education */
+.about-right-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.edu-heading {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-primary-dark);
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.5rem;
+}
+
+:root[data-theme="dark"] .edu-heading {
+  color: #EAEAEA;
+}
+
+.edu-icon {
+  color: var(--color-accent);
+}
+
+.edu-card {
+  background: var(--color-card-bg);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 1.8rem;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+}
+
+:root[data-theme="dark"] .edu-card {
+  background: rgba(17, 21, 28, 0.5);
+}
+
+.edu-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--color-accent);
+  box-shadow: var(--shadow-md);
+}
+
+.edu-school {
+  font-family: var(--font-body);
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.4rem;
+}
+
+:root[data-theme="dark"] .edu-school {
+  color: #EAEAEA;
+}
+
+.edu-degree {
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-dark);
+  margin-bottom: 0.2rem;
+}
+
+:root[data-theme="dark"] .edu-degree {
+  color: #D9CDC5;
+}
+
+.edu-desc {
+  font-size: 0.85rem;
+  color: var(--color-text-muted);
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.edu-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #10B981; /* Green for GPA */
+}
+
+.edu-year {
+  color: var(--color-text-muted);
+  font-weight: 400;
 }
 
 .about-stats {
@@ -430,4 +560,67 @@
     flex-direction: column;
     align-items: flex-start;
   }
+}
+
+/* =====================================
+   ABOUT HIGHLIGHTS GRID
+===================================== */
+.about-highlights-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.about-highlight-card {
+  background: var(--color-card-bg, #1a1a1a);
+  border: 1px solid var(--color-border, #2a2a2a);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.about-highlight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+  border-color: var(--color-accent, #ff8c00);
+}
+
+.highlight-icon {
+  font-size: 1.8rem;
+  color: var(--color-accent, #ff8c00);
+  margin-bottom: 1rem;
+}
+
+.about-highlight-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--color-text);
+}
+
+.about-highlight-card p {
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #ccc;
+}
+
+.about-text-card {
+  background: var(--color-card-bg, rgba(255, 255, 255, 0.05));
+  border: 1px solid var(--color-border, rgba(255, 255, 255, 0.1));
+  border-radius: 12px;
+  padding: 1.5rem 2rem;
+  margin-top: 1rem;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+:root[data-theme="dark"] .about-text-card {
+  background: rgba(20, 20, 20, 0.6);
+  border-color: rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.accent-text {
+  color: var(--color-accent, #ff8c00);
 }

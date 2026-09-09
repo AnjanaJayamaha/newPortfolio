@@ -117,139 +117,65 @@ function About() {
       <CustomCursor />
       <Navbar />
 
-
       <section className="about-page">
-
-
         <div className="container">
 
-          {/* =====================
-              BENTO GRID SECTION
-          ====================== */}
           <motion.div
             className="about-page-container"
             variants={containerVariants}
             initial="hidden"
             animate="visible"
           >
-            {/* Left Side: Bio */}
-            <motion.div className="about-page-text" variants={cardVariants}>
-              <div className="section-label">MORE ABOUT ME</div>
-              <h2 className="about-title">
-                Turning ideas into <br />
-                <span className="accent-text">real products.</span>
-              </h2>
-              <p className="about-desc">
-                More than code — I care about how products work, feel, and create value.
-              </p>
-              <p className="about-desc">
-                I am a third-year Information Technology and Management undergraduate at the University of Moratuwa, with a strong interest in software engineering, full-stack development, and building practical digital solutions. Through academic and personal projects, I have gained hands-on experience working with frontend interfaces, backend development, REST APIs, databases, authentication, and collaborative development workflows.
-              </p>
-              <p className="about-desc">
-                I am also expanding my knowledge in DevOps and cloud technologies, including Docker, CI/CD, GitHub Actions, Linux, and cloud deployment. Alongside development, I value clean user experiences and thoughtful product design, allowing me to approach software from both technical and user-focused perspectives.
-              </p>
-            </motion.div>
-          </motion.div>
 
-          {/* =====================
-              SKILLS MAC WINDOW
-          ====================== */}
-          <div className="skills-merged-wrapper">
+            {/* Section heading */}
             <motion.h1
-              className="skills-page-title"
+              className="skills-page-title about-section-title"
               initial={{ opacity: 0, y: -20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.5 }}
             >
-              Technical <span>Skills</span>
+              About <span>Me</span>
             </motion.h1>
 
-            <motion.div
-              className="mac-window-container"
-              initial={{ opacity: 0, scale: 0.95 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, ease: "easeOut" }}
-            >
-              {/* Sidebar */}
-              <aside className="mac-sidebar">
-                <div className="mac-controls">
-                  <span className="mac-dot red"></span>
-                  <span className="mac-dot yellow"></span>
-                  <span className="mac-dot green"></span>
+            <div className="about-layout-grid">
+              
+              {/* Left Column: Summary */}
+              <motion.div className="about-left-col" variants={cardVariants}>
+                <p>
+                  3rd-year Information Technology and Management undergraduate at the University of Moratuwa with hands-on experience in full-stack development and AI-powered applications. Proficient in React.js, Spring Boot, REST APIs, and modern databases, with practical experience building responsive and scalable solutions.
+                </p>
+                <p>
+                  Strong foundation in Agile/Scrum methodologies, Git/GitHub, API integration, and collaborative software development. Seeking a Software Engineering Internship to apply technical skills and contribute to real-world solutions.
+                </p>
+              </motion.div>
+
+              {/* Right Column: Education */}
+              <motion.div className="about-right-col" variants={cardVariants}>
+                <h2 className="edu-heading"><FaGraduationCap className="edu-icon" /> Education</h2>
+                
+                <div className="edu-card">
+                  <h3 className="edu-school">University of Moratuwa</h3>
+                  <p className="edu-degree">BSc (Hons) in Information Technology &amp; Management</p>
+                  <p className="edu-desc">Faculty of IT</p>
+                  <div className="edu-footer">
+                    <span className="edu-gpa">CGPA: 3.52/4.00</span>
+                    <span className="edu-year">2024 - 2028</span>
+                  </div>
+                </div>
+                
+                <div className="edu-card">
+                  <h3 className="edu-school">Govt. Science College, Matale</h3>
+                  <p className="edu-degree">G.C.E Advanced Level</p>
+                  <div className="edu-footer">
+                    <span className="edu-year" style={{ marginLeft: "auto" }}>2022/2023</span>
+                  </div>
                 </div>
 
-                <div className="mac-search">
-                  <FiSearch className="search-icon" />
-                  <input
-                    type="text"
-                    placeholder="My Skill Store"
-                    value={searchQuery}
-                    onChange={(e) => setSearchQuery(e.target.value)}
-                  />
-                </div>
+              </motion.div>
 
-                <div className="mac-categories-label">CATEGORIES</div>
+            </div>
 
-                <ul className="mac-category-list">
-                  {categoriesList.map(cat => (
-                    <li
-                      key={cat}
-                      className={`mac-cat-item ${activeTab === cat ? "active" : ""}`}
-                      onClick={() => {
-                        setActiveTab(cat);
-                        setSearchQuery("");
-                      }}
-                    >
-                      {cat}
-                    </li>
-                  ))}
-                </ul>
-
-              </aside>
-
-              {/* Content Area */}
-              <main className="mac-content">
-                <div className="mac-content-header">
-                  <h2>{activeTab === "All" ? (searchQuery ? "Search Results" : "All Skills") : activeTab}</h2>
-                  <div className="updated-badge">Updated 2026</div>
-                </div>
-
-                <div className="mac-scroll-area">
-                  <AnimatePresence mode="popLayout">
-                    {filteredData.map(category => (
-                      <motion.div
-                        key={category.id}
-                        className="skill-group"
-                        initial={{ opacity: 0, y: 10 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, scale: 0.95 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="skill-group-tag">{category.id.toUpperCase()}</div>
-                        <h3 className="skill-group-title">{category.title}</h3>
-                        <p className="skill-group-desc">{category.desc}</p>
-
-                        <div className="skill-icon-grid">
-                          {category.skills.map(skill => (
-                            <div key={skill.name} className="skill-icon-box" title={skill.name}>
-                              <span style={{ color: skill.color }}>{skill.icon}</span>
-                            </div>
-                          ))}
-                        </div>
-                      </motion.div>
-                    ))}
-
-                    {filteredData.length === 0 && (
-                      <motion.div className="no-skills-found" initial={{ opacity: 0 }} animate={{ opacity: 1 }}>
-                        <p>No skills found matching "{searchQuery}"</p>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
-                </div>
-              </main>
-            </motion.div>
-          </div>
+          </motion.div>
 
         </div>
       </section>

@@ -1,0 +1,82 @@
+/* =============================================
+   SECTION DOTS — Right-side page navigator
+============================================= */
+.section-dots {
+  position: fixed;
+  right: 28px;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 500;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+.section-dot {
+  position: relative;
+  width: 10px;
+  height: 10px;
+
+  border-radius: 50%;
+  border: 2px solid var(--color-accent);
+  background: transparent;
+
+  cursor: pointer;
+  padding: 0;
+
+  transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-dot:hover {
+  transform: scale(1.4);
+  background: var(--color-accent);
+}
+
+.section-dot.active {
+  width: 14px;
+  height: 14px;
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+  box-shadow: 0 0 0 4px rgba(232, 122, 62, 0.25);
+}
+
+/* Tooltip label */
+.dot-tooltip {
+  position: absolute;
+  right: calc(100% + 10px);
+  top: 50%;
+  transform: translateY(-50%);
+
+  background: var(--color-primary-dark);
+  color: var(--color-bg-cream);
+  font-family: var(--font-body);
+  font-size: 0.72rem;
+  font-weight: 500;
+  white-space: nowrap;
+
+  padding: 4px 10px;
+  border-radius: 6px;
+
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease;
+}
+
+:root[data-theme="dark"] .dot-tooltip {
+  background: var(--color-card-bg);
+  color: var(--color-text-dark);
+  border: 1px solid var(--color-border);
+}
+
+.section-dot:hover .dot-tooltip {
+  opacity: 1;
+}
+
+/* Hide on small screens */
+@media (max-width: 768px) {
+  .section-dots {
+    display: none;
+  }
+}
