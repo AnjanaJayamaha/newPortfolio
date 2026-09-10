@@ -26,7 +26,8 @@ import profileImg from '../assets/profile.png';
 const roles = [
   'Software Engineering Intern',
   'DevOps Intern',
-  'UI/UX Design Intern',
+  'Full Stack Developer',
+  'QA Intern'
 ];
 
 // Animation Variants
@@ -149,7 +150,7 @@ const Hero: React.FC = () => {
               </a>
             </div>
           </motion.div>
-          
+
           <motion.div className="hero-social-boxes" variants={itemVariants}>
             <a href="https://github.com/AnjanaJayamaha" target="_blank" rel="noopener noreferrer" className="social-box" aria-label="GitHub">
               <FaGithub />

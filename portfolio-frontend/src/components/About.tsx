@@ -8,7 +8,7 @@ const About: React.FC = () => {
   return (
     <section className="about-section-small" id="about">
       <div className="container">
-        <motion.div 
+        <motion.div
           className="about-small-container"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -24,7 +24,7 @@ const About: React.FC = () => {
             <br /><br />
             I’m also passionate about Cyber Security and AI, and I’m constantly improving my skills to build secure, intelligent, and high-performance applications.
           </p>
-          
+
           <Link to="/about" className="more-link">
             more about me <FiArrowRight />
           </Link>

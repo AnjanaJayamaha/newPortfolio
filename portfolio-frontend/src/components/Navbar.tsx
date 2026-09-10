@@ -5,7 +5,7 @@ import logoA from "../assets/logo-a.png";
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
-  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'dark');
+  const [theme, setTheme] = useState(localStorage.getItem('theme') || 'light');
   const [activeSection, setActiveSection] = useState("home");
 
   useEffect(() => {

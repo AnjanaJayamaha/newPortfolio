@@ -35,7 +35,7 @@ const Preloader: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
   }, [onComplete]);
 
   return (
-    <motion.div 
+    <motion.div
       className="preloader-container"
       initial={{ opacity: 1 }}
       exit={{ opacity: 0, y: -50 }}
@@ -43,21 +43,21 @@ const Preloader: React.FC<{ onComplete: () => void }> = ({ onComplete }) => {
     >
       <div className="preloader-content">
         <div className="preloader-logo">
-          <span>ANJANA</span><span className="accent">.DEV</span>
+          <span>ANJANA</span><span className="accent">.JAYAMAHA</span>
         </div>
-        
+
         <div className="preloader-percentage-container">
           <span className="preloader-percentage">{progress}</span>
           <span className="preloader-percent-sign">%</span>
         </div>
 
         <div className="preloader-status">
-          INITIALIZING TECH STACK...
+          PORTFOLIO LOADING...
         </div>
 
         <div className="preloader-progress-bar-bg">
-          <div 
-            className="preloader-progress-bar-fill" 
+          <div
+            className="preloader-progress-bar-fill"
             style={{ width: `${progress}%` }}
           ></div>
         </div>
