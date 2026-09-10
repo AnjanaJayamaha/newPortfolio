@@ -15,7 +15,7 @@ function Navbar() {
 
   useEffect(() => {
     const handleScroll = () => {
-      const sections = ["home", "about", "skills", "projects", "achievements", "contact"];
+      const sections = ["home", "about", "journey", "skills", "projects", "achievements", "contact"];
       let current = "";
       
       for (const section of sections) {
@@ -63,6 +63,7 @@ function Navbar() {
         <ul className="nav-links">
           <li className={activeSection === "home" ? "active" : ""} onClick={() => scrollTo("home")}>Home</li>
           <li className={activeSection === "about" ? "active" : ""} onClick={() => scrollTo("about")}>About</li>
+          <li className={activeSection === "journey" ? "active" : ""} onClick={() => scrollTo("journey")}>Journey</li>
           <li className={activeSection === "skills" ? "active" : ""} onClick={() => scrollTo("skills")}>Skills</li>
           <li className={activeSection === "projects" ? "active" : ""} onClick={() => scrollTo("projects")}>Projects</li>
           <li className={activeSection === "achievements" ? "active" : ""} onClick={() => scrollTo("achievements")}>Achievements</li>
@@ -89,6 +90,7 @@ function Navbar() {
           <div className="mobile-menu">
             <button className={activeSection === "home" ? "active" : ""} onClick={() => scrollTo("home")}>Home</button>
             <button className={activeSection === "about" ? "active" : ""} onClick={() => scrollTo("about")}>About</button>
+            <button className={activeSection === "journey" ? "active" : ""} onClick={() => scrollTo("journey")}>Journey</button>
             <button className={activeSection === "skills" ? "active" : ""} onClick={() => scrollTo("skills")}>Skills</button>
             <button className={activeSection === "projects" ? "active" : ""} onClick={() => scrollTo("projects")}>Projects</button>
             <button className={activeSection === "achievements" ? "active" : ""} onClick={() => scrollTo("achievements")}>Achievements</button>
