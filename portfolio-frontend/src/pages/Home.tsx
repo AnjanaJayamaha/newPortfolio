@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import Hero from "../components/Hero";
 import About from "./About";
+import Journey from "./Journey";
 import Skills from "./Skills";
 import Projects from "./Projects";
 import Achievements from "./Achievements";
@@ -17,6 +18,9 @@ function Home() {
       </div>
       <div id="about">
         <About />
+      </div>
+      <div id="journey">
+        <Journey />
       </div>
       <div id="skills">
         <Skills />

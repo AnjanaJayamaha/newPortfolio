@@ -58,7 +58,7 @@ function Projects() {
         <motion.h1
           className="projects-title"
           initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
         >
           Featured <span>Projects</span>
         </motion.h1>
@@ -72,7 +72,7 @@ function Projects() {
               className="projects-grid"
               variants={container}
               initial="hidden"
-              animate="visible"
+              whileInView="visible" viewport={{ once: true, amount: 0.1 }}
             >
               {currentProjects.map((project) => (
                 <motion.div
@@ -130,14 +130,14 @@ function Projects() {
           <motion.div
             className="project-modal-overlay"
             initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
+            whileInView={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedProject(null)}
           >
             <motion.div
               className="mac-modal"
               initial={{ scale: 0.9, opacity: 0, y: 20 }}
-              animate={{ scale: 1, opacity: 1, y: 0 }}
+              whileInView={{ scale: 1, opacity: 1, y: 0 }}
               exit={{ scale: 0.9, opacity: 0, y: 20 }}
               onClick={(e) => e.stopPropagation()}
             >

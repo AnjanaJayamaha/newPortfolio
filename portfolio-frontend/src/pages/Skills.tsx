@@ -107,7 +107,7 @@ function Skills() {
           <motion.h1
             className="skills-page-title"
             initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
           >
             Technical <span>Skills</span>
           </motion.h1>
@@ -115,7 +115,7 @@ function Skills() {
           <motion.div
             className="mac-window-container"
             initial={{ opacity: 0, scale: 0.95 }}
-            animate={{ opacity: 1, scale: 1 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
           >
             {/* Sidebar */}
@@ -173,7 +173,7 @@ function Skills() {
                       key={category.id}
                       className="skill-group"
                       initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
+                      whileInView={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, scale: 0.95 }}
                       transition={{ duration: 0.3 }}
                     >
@@ -199,7 +199,7 @@ function Skills() {
                     <motion.div
                       className="no-skills-found"
                       initial={{ opacity: 0 }}
-                      animate={{ opacity: 1 }}
+                      whileInView={{ opacity: 1 }}
                     >
                       <p>No skills found matching "{searchQuery}"</p>
                     </motion.div>

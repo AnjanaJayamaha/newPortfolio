@@ -1,0 +1,185 @@
+.journey-page {
+  padding: 8rem 0;
+  min-height: 100vh;
+}
+
+.journey-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.journey-section {
+  margin-bottom: 6rem;
+}
+
+.journey-header {
+  margin-bottom: 3rem;
+}
+
+.journey-category-tag {
+  font-family: 'Space Mono', monospace, var(--font-body);
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--color-accent); /* or blue if we want to match screenshot #4D7BFF */
+  font-weight: 600;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.journey-category-title {
+  font-family: var(--font-heading);
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin-bottom: 1rem;
+  letter-spacing: -0.02em;
+}
+
+.journey-category-desc {
+  font-family: var(--font-body);
+  font-size: 1.05rem;
+  line-height: 1.6;
+  color: var(--color-text-muted);
+  max-width: 600px;
+}
+
+:root[data-theme="dark"] .journey-category-title {
+  color: #FFFFFF;
+}
+
+:root[data-theme="dark"] .journey-category-desc {
+  color: #A0AAB5;
+}
+
+/* Timeline Layout */
+.timeline {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  margin-top: 2rem;
+}
+
+/* The vertical line */
+.timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 100px; /* Aligns with the diamond */
+  width: 1px;
+  background-color: var(--color-accent);
+  opacity: 0.5;
+}
+
+.timeline-item {
+  display: flex;
+  position: relative;
+  margin-bottom: 4rem;
+}
+
+.timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+.timeline-date-container {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding-right: 2rem;
+  position: relative;
+}
+
+.timeline-date {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+  text-align: right;
+  margin-top: 2px; /* align with title text */
+}
+
+:root[data-theme="dark"] .timeline-date {
+  color: #FFFFFF;
+}
+
+.timeline-diamond {
+  position: absolute;
+  right: -5px; /* Centers exactly on the line (which is left: 100px, width 1px) */
+  top: 5px;
+  width: 10px;
+  height: 10px;
+  background-color: var(--color-accent);
+  transform: rotate(45deg);
+}
+
+.timeline-content {
+  padding-left: 2rem;
+  flex: 1;
+}
+
+.timeline-title {
+  font-family: var(--font-body);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--color-primary-dark);
+  margin-bottom: 0.2rem;
+}
+
+:root[data-theme="dark"] .timeline-title {
+  color: #FFFFFF;
+}
+
+.timeline-subtitle {
+  font-family: var(--font-body);
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  margin-bottom: 1rem;
+}
+
+:root[data-theme="dark"] .timeline-subtitle {
+  color: #D9CDC5;
+}
+
+.timeline-desc {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--color-text-dark);
+}
+
+:root[data-theme="dark"] .timeline-desc {
+  color: #A0AAB5;
+}
+
+@media (max-width: 768px) {
+  .timeline::before {
+    left: 20px;
+  }
+  
+  .timeline-item {
+    flex-direction: column;
+  }
+
+  .timeline-date-container {
+    width: 100%;
+    align-items: flex-start;
+    padding-left: 45px;
+    padding-right: 0;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-date {
+    text-align: left;
+  }
+
+  .timeline-diamond {
+    left: 15px; /* Center on line */
+    right: auto;
+  }
+
+  .timeline-content {
+    padding-left: 45px;
+  }
+}
