@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar";
 // We can add more placeholder items or actual image paths here.
 // Users can drop images into src/assets/certificates/ and update these paths.
 const certificates = [
+  { id: 0, title: "AWS Cloud Practitioner Essentials", issuer: "AWS Training & Certification", file: "aws-cert.jpg" },
   { id: 1, title: "Python for Beginners", issuer: "University of Moratuwa", file: "python-uom.png" },
   { id: 2, title: "Web Design for Beginners", issuer: "University of Moratuwa", file: "web-uom.png" },
   { id: 3, title: "AI for Beginners", issuer: "HP LIFE", file: "ai-hp.png" },
