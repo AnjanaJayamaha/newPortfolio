@@ -333,15 +333,14 @@
   padding: 0.7rem 1.2rem;
   font-size: 0.85rem;
   border-radius: 10px;
-  background: var(--color-card-bg);
 }
 
 :root[data-theme="dark"] .btn-small {
-  background: transparent;
+  /* Removed transparent background override */
 }
 
 :root[data-theme="dark"] .btn-secondary {
-  color: var(--color-bg-cream);
+  color: var(--color-text-dark); /* Changed from bg-cream (dark) to text-dark (light) */
   border: 1px solid rgba(255, 255, 255, 0.2);
   background: rgba(255, 255, 255, 0.05);
 }
