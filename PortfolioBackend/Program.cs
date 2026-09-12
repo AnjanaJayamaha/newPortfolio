@@ -60,11 +60,11 @@ using (var scope = app.Services.CreateScope())
                 Subtitle = "ChildCare Management System",
                 Description = "A childcare management platform for admins, staff, and parents with child profiles, attendance, communication, and secure role-based access.",
                 TechStack = "React, Spring Boot, MySQL, Firebase",
-                ImageUrl = "sprouty-1.png",
-                VideoUrl = "",
+                ImageUrl = "",
+                VideoUrl = "recording.mp4",
                 GithubUrl = "https://github.com/DevSpark-LittleSparks",
                 LiveDemoUrl = "",
-                Duration = "6 Months",
+                Duration = " 12 Months",
                 IsMaintenance = true
             },
             
