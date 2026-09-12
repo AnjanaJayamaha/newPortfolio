@@ -113,8 +113,8 @@ using (var scope = app.Services.CreateScope())
                 Subtitle = "Mood-Aware AI Companion",
                 Description = "A deeply personalized AI companion that shifts its entire vibe and response tone based on the user's emotional state. Features dynamic themes and mindfulness micro-goals.",
                 TechStack = "React.js, TypeScript, Vite, Vercel Edge API, Groq Cloud, Llama 3.3",
-                ImageUrl = "projects/anj-chatbot.png",
-                VideoUrl = "",
+                ImageUrl = "",
+                VideoUrl = "ANJchatbot.mp4",
                 GithubUrl = "https://github.com/AnjanaJayamaha/ANJ-chatbot",
                 LiveDemoUrl = "https://anj-chatbot.vercel.app/",
                 

@@ -84,7 +84,7 @@ function Projects() {
                 >
                   <div className="project-media">
                     <div className="badges-container">
-                      <div className="type-badge">{project.projectType || "Individual"} Project</div>
+                      <div className="type-badge">{project.projectType || "Individual"} </div>
                       {project.isMaintenance && (
                         <div className="maintenance-badge">Under Maintenance</div>
                       )}
@@ -162,9 +162,9 @@ function Projects() {
                     </div>
                   )}
                   {selectedProject.videoUrl ? (
-                    <video 
-                      controls 
-                      autoPlay 
+                    <video
+                      controls
+                      autoPlay
                       onLoadedMetadata={(e) => {
                         if (selectedProject.title === "ANJ Chatbot") {
                           e.currentTarget.playbackRate = 1.5;
@@ -196,7 +196,7 @@ function Projects() {
                       <span>Duration: {selectedProject.duration}</span>
                     </div>
                     <div className="modal-type-tag">
-                      <span>{selectedProject.projectType || "Individual"} Project</span>
+                      <span>{selectedProject.projectType || "Individual"}</span>
                     </div>
                   </div>
 
@@ -209,7 +209,7 @@ function Projects() {
                       <FaGithub /> GitHub
                     </a>
                     <a href={selectedProject.liveDemoUrl || "#"} target="_blank" rel="noopener noreferrer" className="modal-btn live">
-                      <FaExternalLinkAlt /> Live Demo 
+                      <FaExternalLinkAlt /> Live Demo
                     </a>
                   </div>
                 </div>
