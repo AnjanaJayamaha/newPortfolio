@@ -13,5 +13,6 @@ namespace PortfolioBackend.Models
         public string LiveDemoUrl { get; set; } = string.Empty;
         public string Duration { get; set; } = string.Empty;
         public bool IsMaintenance { get; set; } = false;
+        public string ProjectType { get; set; } = "Individual";
     }
 }

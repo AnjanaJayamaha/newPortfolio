@@ -83,9 +83,12 @@ function Projects() {
                   style={{ cursor: "pointer" }}
                 >
                   <div className="project-media">
-                    {project.isMaintenance && (
-                      <div className="maintenance-badge">Under Maintenance</div>
-                    )}
+                    <div className="badges-container">
+                      <div className="type-badge">{project.projectType || "Individual"} Project</div>
+                      {project.isMaintenance && (
+                        <div className="maintenance-badge">Under Maintenance</div>
+                      )}
+                    </div>
                     {project.videoUrl ? (
                       <video muted playsInline loop autoPlay>
                         <source src={`/src/assets/${project.videoUrl}`} type="video/mp4" />
@@ -187,9 +190,14 @@ function Projects() {
                     ))}
                   </div>
 
-                  <div className="modal-duration-tag">
-                    <FaRegClock />
-                    <span>Duration: {selectedProject.duration}</span>
+                  <div className="modal-meta-tags">
+                    <div className="modal-duration-tag">
+                      <FaRegClock />
+                      <span>Duration: {selectedProject.duration}</span>
+                    </div>
+                    <div className="modal-type-tag">
+                      <span>{selectedProject.projectType || "Individual"} Project</span>
+                    </div>
                   </div>
 
                   <div className="modal-description">

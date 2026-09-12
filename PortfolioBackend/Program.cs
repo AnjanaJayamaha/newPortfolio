@@ -52,7 +52,8 @@ using (var scope = app.Services.CreateScope())
                 VideoUrl = "parking-system.mp4",
                 GithubUrl = "https://github.com/kalanas210/anpr-ai-parking-system",
                 LiveDemoUrl = "",
-                Duration = "9 Months"
+                Duration = "9 Months",
+                ProjectType = "Group"
             },
             new Project
             {
@@ -65,7 +66,8 @@ using (var scope = app.Services.CreateScope())
                 GithubUrl = "https://github.com/DevSpark-LittleSparks",
                 LiveDemoUrl = "",
                 Duration = " 12 Months",
-                IsMaintenance = true
+                IsMaintenance = true,
+                ProjectType = "Group"
             },
             
             new Project
