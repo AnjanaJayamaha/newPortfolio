@@ -8,6 +8,7 @@ import Achievements from "./Achievements";
 import Contact from "./Contact";
 import ScrollToTop from "../components/ScrollToTop";
 import SectionDots from "../components/SectionDots";
+import Footer from "../components/Footer";
 
 function Home() {
   return (
@@ -34,6 +35,8 @@ function Home() {
       <div id="contact">
         <Contact />
       </div>
+      
+      <Footer />
       
       <SectionDots />
       <ScrollToTop />
