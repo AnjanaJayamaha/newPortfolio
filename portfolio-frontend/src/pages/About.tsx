@@ -5,7 +5,7 @@ import CustomCursor from "../components/CustomCursor";
 import profileImg from "../assets/profile.png";
 import { FiSearch } from "react-icons/fi";
 import {
-  FaGraduationCap, FaCode, FaServer, FaLightbulb, FaShieldAlt, FaDatabase,
+  FaCode, FaServer, FaLightbulb, FaShieldAlt, FaDatabase,
   FaHtml5, FaCss3Alt, FaJs, FaReact, FaBootstrap, FaJava, FaPython,
   FaGitAlt, FaFigma, FaPhp, FaNodeJs, FaUsers, FaClock
 } from 'react-icons/fa';
@@ -117,67 +117,68 @@ function About() {
       <CustomCursor />
       <Navbar />
 
-      <section className="about-page">
-        <div className="container">
+      <section id="about" className="about-page">
+        <motion.div
+          className="about-page-container"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          style={{ position: 'relative' }}
+        >
 
-          <motion.div
-            className="about-page-container"
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
+          {/* Section heading */}
+          <motion.h1
+            className="skills-page-title about-section-title"
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            style={{ textAlign: 'center', marginBottom: '4rem', position: 'relative', zIndex: 5 }}
           >
+            About <span>Me</span>
+          </motion.h1>
 
-            {/* Section heading */}
-            <motion.h1
-              className="skills-page-title about-section-title"
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5 }}
-            >
-              About <span>Me</span>
-            </motion.h1>
-
-            <div className="about-layout-grid">
-              
-              {/* Left Column: Summary */}
-              <motion.div className="about-left-col" variants={cardVariants}>
-                <p>
-                  3rd-year Information Technology and Management undergraduate at the University of Moratuwa with hands-on experience in full-stack development and AI-powered applications. Proficient in React.js, Spring Boot, REST APIs, and modern databases, with practical experience building responsive and scalable solutions.
-                </p>
-                <p>
-                  Strong foundation in Agile/Scrum methodologies, Git/GitHub, API integration, and collaborative software development. Seeking a Software Engineering Internship to apply technical skills and contribute to real-world solutions.
-                </p>
-              </motion.div>
-
-              {/* Right Column: Education */}
-              <motion.div className="about-right-col" variants={cardVariants}>
-                <h2 className="edu-heading"><FaGraduationCap className="edu-icon" /> Education</h2>
-                
-                <div className="edu-card">
-                  <h3 className="edu-school">University of Moratuwa</h3>
-                  <p className="edu-degree">BSc (Hons) in Information Technology &amp; Management</p>
-                  <p className="edu-desc">Faculty of IT</p>
-                  <div className="edu-footer">
-                    <span className="edu-gpa">CGPA: 3.52/4.00</span>
-                    <span className="edu-year">2024 - 2028</span>
-                  </div>
-                </div>
-                
-                <div className="edu-card">
-                  <h3 className="edu-school">Govt. Science College, Matale</h3>
-                  <p className="edu-degree">G.C.E Advanced Level</p>
-                  <div className="edu-footer">
-                    <span className="edu-year" style={{ marginLeft: "auto" }}>2022/2023</span>
-                  </div>
-                </div>
-
-              </motion.div>
-
-            </div>
-
+          {/* Floating Avatar on the left */}
+          <motion.div
+            className="floating-avatar-left"
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+          >
+            <img src="/anjana_laptop_hi.jpg" alt="Anjana Waving" />
           </motion.div>
 
-        </div>
+          <div className="about-layout-full">
+
+            {/* Summary */}
+            <motion.div className="about-text-col-full" variants={cardVariants}>
+              <div className="about-heading-section">
+                <h2 className="about-main-title">
+                  Turning ideas into <br />
+                  <span className="highlight-text-large">real products.</span>
+                </h2>
+              </div>
+
+              <div className="about-summary-card">
+                <p className="about-text-large">
+                  I'm <span className="highlight-text">Anjana Jayamaha</span>, a 3rd-year Information Technology and Management undergraduate at the <span className="highlight-text">University of Moratuwa</span> with hands-on experience in full-stack development and AI-powered applications.
+                </p>
+                <p className="about-text-large">
+                  Proficient in React.js, Spring Boot, REST APIs, and modern databases, with practical experience building responsive and scalable solutions.
+                </p>
+                <p className="about-text-large">
+                  Strong foundation in Agile/Scrum methodologies, Git/GitHub, API integration, and collaborative software development.
+                </p>
+
+                {/* Decorative Tech Dots */}
+                <div className="tech-dots">
+                  <span></span><span></span><span></span>
+                </div>
+              </div>
+            </motion.div>
+
+          </div>
+        </motion.div>
       </section>
     </>
   );

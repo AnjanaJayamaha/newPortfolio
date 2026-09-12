@@ -32,13 +32,13 @@ function Contact() {
         <motion.div
           className="contact-header-new"
           initial={{ opacity: 0, y: -30 }}
-          animate={{ opacity: 1, y: 0 }}
+          whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: "backOut" as const }}
         >
           <motion.h1
             className="skills-page-title"
             initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
+            whileInView={{ opacity: 1, y: 0 }}
             style={{ marginBottom: '1.5rem', textAlign: 'center' }}
           >
             Get In <span>Touch</span>
@@ -53,7 +53,7 @@ function Contact() {
           className="contact-grid"
           variants={container}
           initial="hidden"
-          animate="visible"
+          whileInView="visible" viewport={{ once: true, amount: 0.1 }}
         >
           {/* LEFT: WhatsApp Card */}
           <motion.div className="wa-card" variants={itemFade}>
