@@ -2,7 +2,7 @@ import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { FaGithub, FaExternalLinkAlt, FaTimes, FaRegClock } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
-import { projectsData, Project } from "../data/projectsData";
+import { projectsData, type Project } from "../data/projectsData";
 import "./Projects.css";
 
 function Projects() {
