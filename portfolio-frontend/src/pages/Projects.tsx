@@ -1,38 +1,14 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Navbar from "../components/Navbar";
 import { FaGithub, FaExternalLinkAlt, FaTimes, FaRegClock } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
+import { projectsData, Project } from "../data/projectsData";
 import "./Projects.css";
 
 function Projects() {
-  const [projectsData, setProjectsData] = useState<any[]>([]);
-  const [selectedProject, setSelectedProject] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState<string | null>(null);
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 6;
-
-  useEffect(() => {
-    const fetchProjects = async () => {
-      console.log("Fetching projects from API...");
-      try {
-        const apiBaseUrl = import.meta.env.VITE_API_BASE_URL || "http://127.0.0.1:5243";
-        const response = await fetch(`${apiBaseUrl}/api/projects`);
-        console.log("Response status:", response.status);
-        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-        const data = await response.json();
-        console.log("Fetched data:", data);
-        setProjectsData(data);
-      } catch (err: any) {
-        console.error("Fetch error:", err);
-        setError("Backend Error: Failed to connect to the API. Please ensure the backend server is running.");
-      } finally {
-        setLoading(false);
-      }
-    };
-
-    fetchProjects();
-  }, []);
 
   const container = {
     hidden: { opacity: 0 },
@@ -63,11 +39,7 @@ function Projects() {
           Featured <span>Projects</span>
         </motion.h1>
 
-        {loading && <p className="projects-status">Loading projects...</p>}
-        {error && <p className="projects-error">{error}</p>}
-
-        {!loading && !error && (
-          <>
+        <>
             <motion.div
               className="projects-grid"
               variants={container}
@@ -124,7 +96,6 @@ function Projects() {
               </div>
             )}
           </>
-        )}
       </section>
 
       {/* Project Modal */}
