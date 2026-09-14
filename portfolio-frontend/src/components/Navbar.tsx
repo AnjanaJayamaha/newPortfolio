@@ -56,7 +56,7 @@ function Navbar() {
     <header className="navbar-wrapper">
       <nav className="navbar">
         <button className="nav-brand" onClick={() => scrollTo("home")}>
-          <img src={logoA} alt="A Logo" className="navbar-logo" />
+          <img src="/assets/logo-a.png" alt="A Logo" className="navbar-logo" />
           <span className="navbar-logo-text">NJ</span>
         </button>
 

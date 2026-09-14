@@ -52,7 +52,7 @@ function Education() {
                 <h3>University of Moratuwa</h3>
               </div>
               <div className="edu-logo-container">
-                <img src={uniLogo} alt="University of Moratuwa Logo" />
+                <img src="/assets/uni.jpeg" alt="University of Moratuwa Logo" />
               </div>
             </div>
             <p>Second Year Undergraduate</p>
@@ -71,7 +71,7 @@ function Education() {
                 <h3>Physical Stream</h3>
               </div>
               <div className="edu-logo-container">
-                <img src={gscLogo} alt="Govt. Science College Matale Logo" />
+                <img src="/assets/gsc.jpeg" alt="Govt. Science College Matale Logo" />
               </div>
             </div>
             <p>Combined Mathematics • Chemistry • Physics</p>

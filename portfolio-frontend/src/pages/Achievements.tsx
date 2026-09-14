@@ -28,7 +28,7 @@ function Achievements() {
           {certificates.map((cert) => (
             <div key={cert.id} className="certificate-card">
               <div className="cert-image-wrapper">
-                <img src={`/src/assets/certificates/${cert.file}`} alt={cert.title} loading="lazy" />
+                <img src={`/assets/certificates/${cert.file}`} alt={cert.title} loading="lazy" />
               </div>
               <div className="cert-details">
                 <h3>{cert.title}</h3>

@@ -63,10 +63,10 @@ function Projects() {
                     </div>
                     {project.videoUrl ? (
                       <video muted playsInline loop autoPlay>
-                        <source src={`/src/assets/${project.videoUrl}`} type="video/mp4" />
+                        <source src={`/assets/${project.videoUrl}`} type="video/mp4" />
                       </video>
                     ) : project.imageUrl ? (
-                      <img src={`/src/assets/${project.imageUrl}`} alt={project.title} />
+                      <img src={`/assets/${project.imageUrl}`} alt={project.title} />
                     ) : (
                       <div className="project-placeholder">
                         <span>No Media Available</span>
@@ -142,10 +142,10 @@ function Projects() {
                         }
                       }}
                     >
-                      <source src={`/src/assets/${selectedProject.videoUrl}`} type="video/mp4" />
+                      <source src={`/assets/${selectedProject.videoUrl}`} type="video/mp4" />
                     </video>
                   ) : selectedProject.imageUrl ? (
-                    <img src={`/src/assets/${selectedProject.imageUrl}`} alt={selectedProject.title} />
+                    <img src={`/assets/${selectedProject.imageUrl}`} alt={selectedProject.title} />
                   ) : (
                     <div className="modal-placeholder">Media Coming Soon</div>
                   )}
