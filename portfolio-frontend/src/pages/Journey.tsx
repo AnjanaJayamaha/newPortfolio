@@ -18,6 +18,7 @@ const journeyData = [
   {
     category: "University of Moratuwa",
     description: "My undergraduate studies bring software, information technology, and management together, with an increasing focus on building practical systems.",
+    logo: "/assets/uni.jpeg",
     items: [
       {
         title: "BSc (Hons) IT & Management",
@@ -42,6 +43,7 @@ const journeyData = [
   {
     category: "School years",
     description: "My school years built the foundation for how I approach learning, leadership, and working with others.",
+    logo: "/assets/gsc.jpeg",
     items: [
       {
         title: "Advanced Level Examination",
@@ -91,7 +93,16 @@ const Journey: React.FC = () => {
               <span className="journey-category-tag">
                 {(sectionIdx + 1).toString().padStart(2, '0')} / {section.category.toUpperCase()}
               </span>
-              <h2 className="journey-category-title">{section.category}</h2>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
+                {section.logo && (
+                  <img 
+                    src={section.logo} 
+                    alt={`${section.category} Logo`} 
+                    style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(255,255,255,0.1)' }} 
+                  />
+                )}
+                <h2 className="journey-category-title" style={{ margin: 0 }}>{section.category}</h2>
+              </div>
               <p className="journey-category-desc">{section.description}</p>
             </div>
 
