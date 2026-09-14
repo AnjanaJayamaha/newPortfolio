@@ -11,7 +11,7 @@ const journeyData = [
         title: "Corporate Banking Intern",
         subtitle: "People's Bank",
         logo: "/assets/peoples-bank.png",
-        date: "01",
+        date: "2023",
         description: "Gained exposure to a professional banking environment, developing practical understanding across relationship management, risk, decision-making, and business operations."
       }
     ]
