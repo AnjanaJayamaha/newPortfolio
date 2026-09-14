@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Moon } from "lucide-react";
 
-import logoA from "../assets/logo-a.png";
+
 
 function Navbar() {
   const [isOpen, setIsOpen] = useState(false);

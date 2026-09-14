@@ -1,7 +1,6 @@
 import Navbar from "../components/Navbar";
 import { motion } from "framer-motion";
-import uniLogo from "../assets/uni.jpeg";
-import gscLogo from "../assets/gsc.jpeg";
+
 
 function Education() {
   const container = {
