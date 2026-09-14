@@ -236,7 +236,7 @@ const Hero: React.FC = () => {
             <div
               className="portrait-image"
               style={{
-                backgroundImage: `url(${profileImg})`,
+                backgroundImage: `url('/assets/profile.png')`,
               }}
             ></div>
 
