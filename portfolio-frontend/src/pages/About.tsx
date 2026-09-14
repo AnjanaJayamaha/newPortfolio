@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Navbar from "../components/Navbar";
 import CustomCursor from "../components/CustomCursor";
-import profileImg from "../assets/profile.png";
+
 import { FiSearch } from "react-icons/fi";
 import {
   FaCode, FaServer, FaLightbulb, FaShieldAlt, FaDatabase,

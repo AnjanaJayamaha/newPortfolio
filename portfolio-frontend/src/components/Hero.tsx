@@ -21,7 +21,7 @@ import {
   FiTerminal,
 } from 'react-icons/fi';
 
-import profileImg from '../assets/profile.png';
+
 
 const roles = [
   'Software Engineering Intern',

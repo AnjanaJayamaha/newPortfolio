@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "../components/Navbar";
 import { motion, AnimatePresence } from "framer-motion";
-import profileImg from "../assets/profile.png";
+
 import CustomCursor from "../components/CustomCursor";
 import { FiSearch } from "react-icons/fi";
 import {
