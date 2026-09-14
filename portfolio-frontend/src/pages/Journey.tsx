@@ -6,11 +6,11 @@ const journeyData = [
   {
     category: "Professional Experience",
     description: "Early professional exposure has helped me connect academic knowledge with real organisational and business environments.",
-    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/5/52/People%27s_Bank_%28Sri_Lanka%29_logo.svg/200px-People%27s_Bank_%28Sri_Lanka%29_logo.svg.png",
     items: [
       {
         title: "Corporate Banking Intern",
         subtitle: "People's Bank",
+        logo: "/assets/peoples-bank.png",
         date: "01",
         description: "Gained exposure to a professional banking environment, developing practical understanding across relationship management, risk, decision-making, and business operations."
       }
@@ -19,36 +19,38 @@ const journeyData = [
   {
     category: "University of Moratuwa",
     description: "My undergraduate studies bring software, information technology, and management together, with an increasing focus on building practical systems.",
-    logo: "/assets/uni.jpeg",
     items: [
       {
         title: "BSc (Hons) IT & Management",
         subtitle: "University of Moratuwa",
+        logo: "/assets/uni.jpeg",
         date: "2024 - Present",
         description: "Studying Information Technology & Management with coursework spanning software engineering, programming, web development, databases, systems, and related technical disciplines."
       },
       {
         title: "Software & Systems Development",
         subtitle: "University of Moratuwa",
+        logo: "/assets/uni.jpeg",
         date: "Current",
         description: "Developing practical experience through collaborative and individual projects involving frontend and backend development, APIs, databases, system design, and software engineering workflows."
       },
       {
         title: "University Projects",
         subtitle: "University of Moratuwa",
+        logo: "/assets/uni.jpeg",
         date: "Current",
         description: "Building projects across web applications, recruitment systems, databases, and hardware-integrated systems while working with tools such as Git, GitHub, Jira, and Figma."
       }
     ]
   },
   {
-    category: "School Years",
+    category: "School years",
     description: "My school years built the foundation for how I approach learning, leadership, and working with others.",
-    logo: "/assets/gsc.jpeg",
     items: [
       {
         title: "Advanced Level Examination",
         subtitle: "Govt. Science College, Matale",
+        logo: "/assets/gsc.jpeg",
         date: "2023",
         description: "Completed my GCE Advanced Level examinations in 2023, in the Physical science stream."
       }
@@ -94,16 +96,7 @@ const Journey: React.FC = () => {
               <span className="journey-category-tag">
                 {(sectionIdx + 1).toString().padStart(2, '0')} / {section.category.toUpperCase()}
               </span>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
-                {section.logo && (
-                  <img
-                    src={section.logo}
-                    alt={`${section.category} Logo`}
-                    style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(255,255,255,0.1)' }}
-                  />
-                )}
-                <h2 className="journey-category-title" style={{ margin: 0 }}>{section.category}</h2>
-              </div>
+              <h2 className="journey-category-title">{section.category}</h2>
               <p className="journey-category-desc">{section.description}</p>
             </div>
 
@@ -115,8 +108,19 @@ const Journey: React.FC = () => {
                     <div className="timeline-diamond"></div>
                   </div>
                   <div className="timeline-content">
-                    <h3 className="timeline-title">{item.title}</h3>
-                    <h4 className="timeline-subtitle">{item.subtitle}</h4>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
+                      {item.logo && (
+                        <img 
+                          src={item.logo} 
+                          alt={`${item.subtitle} Logo`} 
+                          style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover' }} 
+                        />
+                      )}
+                      <div>
+                        <h3 className="timeline-title" style={{ margin: 0 }}>{item.title}</h3>
+                        <h4 className="timeline-subtitle" style={{ margin: 0, marginTop: '4px' }}>{item.subtitle}</h4>
+                      </div>
+                    </div>
                     <p className="timeline-desc">{item.description}</p>
                   </div>
                 </motion.div>
