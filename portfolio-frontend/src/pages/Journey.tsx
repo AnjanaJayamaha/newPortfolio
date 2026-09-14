@@ -4,7 +4,7 @@ import './Journey.css';
 
 const journeyData = [
   {
-    category: "Professional experience",
+    category: "Professional Experience",
     description: "Early professional exposure has helped me connect academic knowledge with real organisational and business environments.",
     items: [
       {
