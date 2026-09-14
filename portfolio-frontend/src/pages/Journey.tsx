@@ -6,6 +6,7 @@ const journeyData = [
   {
     category: "Professional Experience",
     description: "Early professional exposure has helped me connect academic knowledge with real organisational and business environments.",
+    logo: "https://upload.wikimedia.org/wikipedia/en/thumb/5/52/People%27s_Bank_%28Sri_Lanka%29_logo.svg/200px-People%27s_Bank_%28Sri_Lanka%29_logo.svg.png",
     items: [
       {
         title: "Corporate Banking Intern",
@@ -41,7 +42,7 @@ const journeyData = [
     ]
   },
   {
-    category: "School years",
+    category: "School Years",
     description: "My school years built the foundation for how I approach learning, leadership, and working with others.",
     logo: "/assets/gsc.jpeg",
     items: [
@@ -95,10 +96,10 @@ const Journey: React.FC = () => {
               </span>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '1rem' }}>
                 {section.logo && (
-                  <img 
-                    src={section.logo} 
-                    alt={`${section.category} Logo`} 
-                    style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(255,255,255,0.1)' }} 
+                  <img
+                    src={section.logo}
+                    alt={`${section.category} Logo`}
+                    style={{ width: '60px', height: '60px', borderRadius: '50%', objectFit: 'cover', border: '2px solid rgba(255,255,255,0.1)' }}
                   />
                 )}
                 <h2 className="journey-category-title" style={{ margin: 0 }}>{section.category}</h2>
