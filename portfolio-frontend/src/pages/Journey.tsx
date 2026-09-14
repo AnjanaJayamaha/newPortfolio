@@ -17,7 +17,7 @@ const journeyData = [
     ]
   },
   {
-    category: "University of Moratuwa",
+    category: "University",
     description: "My undergraduate studies bring software, information technology, and management together, with an increasing focus on building practical systems.",
     items: [
       {
@@ -44,8 +44,7 @@ const journeyData = [
     ]
   },
   {
-    category: "School years",
-    description: "My school years built the foundation for how I approach learning, leadership, and working with others.",
+    category: "School Years",
     items: [
       {
         title: "Advanced Level Examination",
@@ -110,10 +109,10 @@ const Journey: React.FC = () => {
                   <div className="timeline-content">
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', marginBottom: '0.5rem' }}>
                       {item.logo && (
-                        <img 
-                          src={item.logo} 
-                          alt={`${item.subtitle} Logo`} 
-                          style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover' }} 
+                        <img
+                          src={item.logo}
+                          alt={`${item.subtitle} Logo`}
+                          style={{ width: '40px', height: '40px', borderRadius: '50%', objectFit: 'cover' }}
                         />
                       )}
                       <div>
