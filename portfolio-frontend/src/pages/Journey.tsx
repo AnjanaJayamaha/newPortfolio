@@ -28,13 +28,6 @@ const journeyData = [
         description: "Studying Information Technology & Management with coursework spanning software engineering, programming, web development, databases, systems, and related technical disciplines."
       },
       {
-        title: "Software & Systems Development",
-        subtitle: "University of Moratuwa",
-        logo: "/assets/uni.jpeg",
-        date: "Current",
-        description: "Developing practical experience through collaborative and individual projects involving frontend and backend development, APIs, databases, system design, and software engineering workflows."
-      },
-      {
         title: "University Projects",
         subtitle: "University of Moratuwa",
         logo: "/assets/uni.jpeg",
